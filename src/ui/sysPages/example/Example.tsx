@@ -1,7 +1,9 @@
+import { Box, Typography } from "@mui/material";
+
 export const Example = () => {
   return (
-    <div>
-      <p>Example Page</p>
-    </div>
+    <Box>
+      <Typography>Example Page</Typography>
+    </Box>
   );
 };
