@@ -11,99 +11,50 @@ import {
   ShowNotificationStyles,
 } from "./ShowNotificationStyles";
 import { MyTooltip } from "../myTooltip/MyTooltip";
+import { SysAppLayoutContext } from "../../../app/AppLayout";
 
-interface IShowNotificationProps {
-  close?: () => void;
+export interface IShowNotificationProps {
+  open?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
   duration?: number;
-  showCloseButton?: boolean;
-  showStartIcon?: boolean;
   type?: "success" | "error" | "warning" | "default";
   message?: string;
-  horizontal?: "left" | "center" | "right";
-  vertical?: "top" | "bottom";
 }
 
 export const ShowNotification: React.FC<IShowNotificationProps> = ({
-  close,
+  open = false,
+  onOpen,
+  onClose,
   duration = 4000,
-  horizontal = "left",
-  vertical = "bottom",
   type = "default",
-  showCloseButton = false,
-  showStartIcon = true,
   message,
 }) => {
-  const [visible, setVisible] = React.useState(true);
-  const [isPaused, setIsPaused] = React.useState(false);
-  const remainingTimeRef = React.useRef(duration);
-  const timerRef = React.useRef<number | null>(null);
-
-  const startTimer = React.useCallback(() => {
-    if (timerRef.current !== null) return;
-
-    timerRef.current = window.setTimeout(() => {
-      setVisible(false);
-      close && close();
-    }, remainingTimeRef.current);
-  }, [close]);
-
-  const pauseTimer = React.useCallback(() => {
-    if (timerRef.current !== null) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-  }, []);
-
-  React.useEffect(() => {
-    !isPaused && startTimer();
-    return () => pauseTimer();
-  }, [isPaused, duration, startTimer, pauseTimer]);
-
-  const handleMouseEnter = React.useCallback(() => {
-    setIsPaused(true);
-    pauseTimer();
-  }, [pauseTimer]);
-
-  const handleMouseLeave = React.useCallback(() => {
-    setIsPaused(false);
-    startTimer();
-  }, [startTimer]);
-
-  if (!visible) return null;
+  const { isMobile } = React.useContext(SysAppLayoutContext);
+  if (!open) return null;
 
   return (
-    <Snackbar
-      open={visible}
-      onClose={() => {
-        setVisible(false);
-        close && close();
-      }}
-      anchorOrigin={{
-        vertical: vertical,
-        horizontal: horizontal,
-      }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <ShowNotificationContainer
-        type={type}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+    <MyTooltip disableFocusListener title={message} customWidth={360} arrow>
+      <Snackbar
+        open={open}
+        onClose={onClose}
+        autoHideDuration={duration}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
       >
-        <ShowNotificationBody>
-          {showStartIcon &&
+        <ShowNotificationContainer type={type}>
+          <ShowNotificationBody>
             {
-              success: <CheckRoundedIcon />,
-              error: <ErrorOutlineRoundedIcon />,
-              warning: <WarningAmberRoundedIcon />,
-              default: <NotificationsNoneRoundedIcon />,
-            }[type]}
-          <MyTooltip
-            disableFocusListener
-            title={message}
-            customWidth={360}
-            placement="top-start"
-          >
+              {
+                success: <CheckRoundedIcon />,
+                error: <ErrorOutlineRoundedIcon />,
+                warning: <WarningAmberRoundedIcon />,
+                default: <NotificationsNoneRoundedIcon />,
+              }[type]
+            }
+
             <Typography
               variant="body1"
               color="textPrimary"
@@ -114,19 +65,14 @@ export const ShowNotification: React.FC<IShowNotificationProps> = ({
             >
               {message}
             </Typography>
-          </MyTooltip>
-          {showCloseButton && (
-            <IconButton
-              onClick={() => {
-                setVisible(false);
-                close && close();
-              }}
-            >
-              <CloseRoundedIcon />
-            </IconButton>
-          )}
-        </ShowNotificationBody>
-      </ShowNotificationContainer>
-    </Snackbar>
+            {!isMobile && (
+              <IconButton onClick={onClose}>
+                <CloseRoundedIcon />
+              </IconButton>
+            )}
+          </ShowNotificationBody>
+        </ShowNotificationContainer>
+      </Snackbar>
+    </MyTooltip>
   );
 };

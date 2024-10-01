@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Example } from "../ui/sysPages/example/Example";
 
-export const AppRoutes = () => {
+export const AppRouterSwitch = () => {
   return (
     <Routes>
       <Route path="/example" element={<Example />} />
