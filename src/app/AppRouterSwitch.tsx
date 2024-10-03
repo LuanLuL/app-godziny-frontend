@@ -1,6 +1,17 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Example } from "../ui/sysPages/example/Example";
 
+export interface IRoutes {
+  label: string;
+  path: string;
+}
+
+export const sysRoutes: IRoutes[] = [
+  { label: "Atividades", path: "/atividade" },
+  { label: "Cursos", path: "/cursos" },
+  { label: "Usuários", path: "/usuarios" },
+];
+
 export const AppRouterSwitch = () => {
   return (
     <Routes>
