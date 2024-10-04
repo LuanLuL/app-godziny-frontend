@@ -10,6 +10,7 @@ import {
   ShowNotification,
 } from "../ui/sysComponents/showNotification/ShowNotification";
 import { useTheme, useMediaQuery } from "@mui/material";
+import { AppHeader } from "../ui/sysComponents/appHeader/AppHeader";
 
 export const SysAppLayoutContext = createContext<ISysAppLayoutContext>(
   {} as ISysAppLayoutContext
@@ -54,6 +55,7 @@ export const AppLayout: React.FC = () => {
   return (
     <SysAppLayoutContext.Provider value={providerValue}>
       <Router>
+        <AppHeader />
         <AppRouterSwitch />
       </Router>
       <ShowNotification {...showNotification} />

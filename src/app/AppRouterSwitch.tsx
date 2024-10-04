@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Example } from "../ui/sysPages/example/Example";
+import { Box, Typography } from "@mui/material";
 
 export interface IRoutes {
   label: string;
@@ -7,7 +8,8 @@ export interface IRoutes {
 }
 
 export const sysRoutes: IRoutes[] = [
-  { label: "Atividades", path: "/atividade" },
+  { label: "Exemplo", path: "/example" },
+  { label: "Atividades", path: "/atividades" },
   { label: "Cursos", path: "/cursos" },
   { label: "Usuários", path: "/usuarios" },
 ];
@@ -16,11 +18,30 @@ export const AppRouterSwitch = () => {
   return (
     <Routes>
       <Route path="/example" element={<Example />} />
-      {/* <Route path="/doenca/:screenState/:id?" element={<DoencaModule />} />
-      <Route path="/patogeno/:screenState/:id?" element={<PatogenoModule />} />
-      <Route path="/sintoma/:screenState/:id?" element={<SintomaModule />} />
-      <Route path="/apoio/diagnostico" element={<ApoioDiagnostico />} />
-      <Route path="/logging" element={<Logging />} /> */}
+      <Route
+        path="/atividades/:screenState?/:id?"
+        element={
+          <Box>
+            <Typography>Atividades</Typography>
+          </Box>
+        }
+      />
+      <Route
+        path="/cursos/:screenState?/:id?"
+        element={
+          <Box>
+            <Typography>cursos</Typography>
+          </Box>
+        }
+      />
+      <Route
+        path="/usuarios/:screenState?/:id?"
+        element={
+          <Box>
+            <Typography>usuarios</Typography>
+          </Box>
+        }
+      />
       <Route path="*" element={<Navigate to="/example" />} />
     </Routes>
   );

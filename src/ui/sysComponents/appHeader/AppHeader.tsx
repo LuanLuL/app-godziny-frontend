@@ -1,19 +1,26 @@
-import { Box, Button, IconButton } from "@mui/material";
+import React from "react";
+import { Box, IconButton } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   HeaderBody,
   HeaderTitle,
+  HeaderRoutes,
   HeaderOptions,
   appHeaderStyles,
+  OptionButton,
   NotificationsIcon,
 } from "./AppHeaderStyles";
 import { sysRoutes } from "../../../app/AppRouterSwitch";
 import logo from "../../../assets/imgs/logoGodzinyApp.png";
 import avatar from "../../../assets/imgs/avatar.png";
-import { useTheme } from "@emotion/react";
 
 export const AppHeader: React.FC = () => {
-  const theme = useTheme();
-  console.log(theme);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleClick = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <HeaderBody>
@@ -25,25 +32,35 @@ export const AppHeader: React.FC = () => {
           sx={appHeaderStyles.imgLogo}
         />
       </HeaderTitle>
-      <HeaderOptions>
-        {sysRoutes.map((route, index) => (
-          <Button
-            key={`route${index}:${route.label}`}
-            sx={appHeaderStyles.optionBody}
-          >
-            {route.label}
-          </Button>
-        ))}
-        <IconButton action={() => console.log("notificaçao")}>
-          <NotificationsIcon />
-        </IconButton>
-        <Box
-          component="img"
-          src={avatar}
-          alt="avatarApp"
-          sx={appHeaderStyles.imgAvatar}
-        />
-      </HeaderOptions>
+      <HeaderRoutes>
+        <Box>
+          {sysRoutes.map((route, index) => (
+            <OptionButton
+              key={`route${index}:${route.label}`}
+              onClick={() => handleClick(route.path)}
+              includeborder={
+                location.pathname === route.path ? "true" : "false"
+              }
+              sx={{
+                borderRadius: location.pathname === route.path ? 0 : "",
+              }}
+            >
+              {route.label}
+            </OptionButton>
+          ))}
+        </Box>
+        <HeaderOptions>
+          <IconButton action={() => {}}>
+            <NotificationsIcon />
+          </IconButton>
+          <Box
+            component="img"
+            src={avatar}
+            alt="avatarApp"
+            sx={appHeaderStyles.imgAvatar}
+          />
+        </HeaderOptions>
+      </HeaderRoutes>
     </HeaderBody>
   );
 };

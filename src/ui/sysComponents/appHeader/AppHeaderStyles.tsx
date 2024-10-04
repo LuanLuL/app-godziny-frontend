@@ -1,6 +1,10 @@
-import { Box, styled } from "@mui/material";
+import { Box, Button, styled } from "@mui/material";
 import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+
+interface IOptionButton {
+  includeborder: "true" | "false";
+}
 
 const HeaderBody = styled(Box)(({ theme }) => ({
   width: "100%",
@@ -23,14 +27,38 @@ const HeaderTitle = styled(Box)(({ theme }) => ({
   flexGrow: 4,
 }));
 
-const HeaderOptions = styled(Box)(({ theme }) => ({
+const HeaderRoutes = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   justifyContent: "flex-end",
   alignItems: "center",
-  gap: "1px",
+  gap: sysSizing.spacingFixedXl,
   flexGrow: 6,
 }));
+
+const HeaderOptions = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: sysSizing.spacingFixedMd,
+}));
+
+const OptionButton = styled(Button)<IOptionButton>(
+  ({ theme, includeborder }) => ({
+    height: "40px",
+    padding: "10px 12px",
+    backgroundColor: theme.palette.common.white,
+    color: theme.palette.info.main,
+    transition: "background-color 0.3s ease",
+    "&:hover": {
+      backgroundColor: theme.palette.background.paper,
+    },
+    ...(includeborder === "true" && {
+      borderBottom: `2.5px solid ${theme.palette.info.dark}`,
+    }),
+  })
+);
 
 const appHeaderStyles = {
   imgLogo: {
@@ -43,16 +71,14 @@ const appHeaderStyles = {
     height: "40px",
     borderRadius: sysSizing.radiusInfinite,
   },
-  optionBody: {
-    height: "40px",
-    borderRadius: sysSizing.spacingFixedXs,
-  },
 };
 
 export {
   HeaderBody,
   HeaderTitle,
+  HeaderRoutes,
   HeaderOptions,
+  OptionButton,
   appHeaderStyles,
   NotificationsIcon,
 };

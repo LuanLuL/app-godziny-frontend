@@ -37,6 +37,7 @@ const yellowScale = {
 const sysBaseColors = {
   black: "#000000de",
   white: "#ffffff",
+  hoverForWhite: "#e2e2e2",
 };
 
 const sysPalette: PaletteOptions = {
@@ -75,7 +76,7 @@ const sysPalette: PaletteOptions = {
     disabled: grayScale.disabled,
   },
   background: {
-    paper: sysBaseColors.white,
+    paper: sysBaseColors.hoverForWhite,
     default: sysBaseColors.white,
   },
   divider: grayScale.separator,

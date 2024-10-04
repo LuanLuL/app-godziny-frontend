@@ -1,10 +1,9 @@
-import { Box } from "@mui/material";
-import { AppHeader } from "../../sysComponents/appHeader/AppHeader";
+import { Box, Typography } from "@mui/material";
 
 export const Example = () => {
   return (
     <Box>
-      <AppHeader />
+      <Typography>Example</Typography>
     </Box>
   );
 };
