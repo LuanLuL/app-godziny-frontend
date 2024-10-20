@@ -13,7 +13,8 @@ const HeaderBody = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  boxShadow: "0px -1px 0px 0px #0000001a inset",
+  boxShadow: `0px -1px 0px 0px ${theme.palette.divider} inset`,
+  zIndex: 5,
 }));
 
 const NotificationsIcon = styled(NotificationsNoneIcon)(({ theme }) => ({
@@ -64,7 +65,7 @@ const appHeaderStyles = {
   imgLogo: {
     width: "100%",
     height: "auto",
-    maxWidth: "170px",
+    maxWidth: "160px",
   },
   imgAvatar: {
     width: "40px",

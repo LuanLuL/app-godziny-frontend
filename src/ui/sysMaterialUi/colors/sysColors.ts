@@ -80,6 +80,11 @@ const sysPalette: PaletteOptions = {
     default: sysBaseColors.white,
   },
   divider: grayScale.separator,
+  grey: {
+    A100: grayScale.claro,
+    A200: grayScale.normal,
+    A400: grayScale.escuro,
+  },
 };
 
 export default sysPalette;
