@@ -1,8 +1,8 @@
 import { PaletteOptions } from "@mui/material";
 
 const blueScale = {
-  escuro: "#003399",
-  claro: "#6699FF",
+  escuro: "#001F5C",
+  claro: "#C9D4DF",
   normal: "#003399",
 };
 
@@ -61,9 +61,9 @@ const sysPalette: PaletteOptions = {
     dark: yellowScale.escuro,
   },
   info: {
-    light: blueScale.claro,
-    main: blueScale.normal,
-    dark: blueScale.escuro,
+    light: grayScale.claro,
+    main: grayScale.normal,
+    dark: grayScale.escuro,
   },
   error: {
     light: redScale.claro,
@@ -80,11 +80,6 @@ const sysPalette: PaletteOptions = {
     default: sysBaseColors.white,
   },
   divider: grayScale.separator,
-  grey: {
-    A100: grayScale.claro,
-    A200: grayScale.normal,
-    A400: grayScale.escuro,
-  },
 };
 
 export default sysPalette;

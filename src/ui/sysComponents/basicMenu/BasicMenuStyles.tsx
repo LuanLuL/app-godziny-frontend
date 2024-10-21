@@ -8,6 +8,7 @@ const BasicMenuStyles = {
   menu: {
     "& .css-oeilvz-MuiButtonBase-root-MuiMenuItem-root": {
       backgroundColor: "#ffffff",
+      padding: "9px 16px",
     },
     "& .css-8oiess-MuiPaper-root-MuiPopover-paper-MuiMenu-paper": {
       backgroundColor: "#ffffff",

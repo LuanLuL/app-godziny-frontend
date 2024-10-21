@@ -53,10 +53,10 @@ const ShowNotificationContainer = styled(Box)<IContainer>(
       },
     }),
     ...(type === "default" && {
-      backgroundColor: theme.palette.info.light,
+      backgroundColor: theme.palette.primary.light,
       color: theme.palette.text.primary,
       "& .MuiSvgIcon-root": {
-        color: theme.palette.info.dark,
+        color: theme.palette.primary.dark,
       },
     }),
   })

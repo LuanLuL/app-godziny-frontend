@@ -50,13 +50,14 @@ const OptionButton = styled(Button)<IOptionButton>(
     height: "40px",
     padding: "10px 12px",
     backgroundColor: theme.palette.common.white,
-    color: theme.palette.info.main,
+    color: theme.palette.common.black,
     transition: "background-color 0.3s ease",
     "&:hover": {
       backgroundColor: theme.palette.background.paper,
     },
     ...(includeborder === "true" && {
-      borderBottom: `2.5px solid ${theme.palette.info.dark}`,
+      color: `${theme.palette.primary.main}`,
+      borderBottom: `2.5px solid ${theme.palette.primary.main}`,
     }),
   })
 );
