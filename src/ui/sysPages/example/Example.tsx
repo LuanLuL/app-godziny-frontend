@@ -5,7 +5,8 @@ import {
   BasicMenu,
   optionsToBasicMenu,
 } from "../../sysComponents/basicMenu/BasicMenu";
-import { SysButton } from "../../sysComponents/sysForm/primaryButton/SysButton";
+import { SysButton } from "../../sysComponents/sysForm/sysButton/SysButton";
+import { SysToggleInput } from "../../sysComponents/sysForm/sysToggleInput/SysToggleInput";
 
 export const Example = () => {
   const optionsToBasicMenu: optionsToBasicMenu[] = [
@@ -42,8 +43,22 @@ export const Example = () => {
   ];
 
   return (
-    <Box sx={{ padding: "40px 20px" }}>
-      <Box sx={{ display: "flex", flexDirection: "row", gap: "30px" }}>
+    <Box
+      sx={{
+        padding: "40px 20px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "30px",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          gap: "30px",
+        }}
+      >
         <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <IconTooltip
             title="Informe alguma coisa para o usuário aqui!"
@@ -121,6 +136,18 @@ export const Example = () => {
               event: React.MouseEvent<HTMLButtonElement, MouseEvent>
             ) => {
               console.log("Clicou no link button!", event);
+            }}
+          />
+        </Box>
+      </Box>
+      <Box sx={{ display: "flex", flexDirection: "row", gap: "30px" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <SysToggleInput
+            label="Label"
+            msgchecked="Positivo"
+            msgunchecked="Negativo"
+            onSubmit={() => {
+              console.log("Você escolheu entre um ou outro");
             }}
           />
         </Box>

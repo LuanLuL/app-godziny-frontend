@@ -6,9 +6,8 @@ const BasicMenuStyles = {
     height: sysSizing.spacingFixedLg,
   },
   menu: {
-    "& .css-oeilvz-MuiButtonBase-root-MuiMenuItem-root": {
-      backgroundColor: "#ffffff",
-      padding: "9px 16px",
+    "& .css-1v6ch8a-MuiButtonBase-root-MuiMenuItem-root": {
+      padding: "8px 16px",
     },
     "& .css-8oiess-MuiPaper-root-MuiPopover-paper-MuiMenu-paper": {
       backgroundColor: "#ffffff",

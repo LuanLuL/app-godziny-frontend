@@ -1,14 +1,15 @@
 import { PaletteOptions } from "@mui/material";
 
 const blueScale = {
-  escuro: "#001F5C",
-  claro: "#C9D4DF",
+  escuro: "#001f5C",
+  claro: "#c9d4df",
   normal: "#003399",
+  fundo: "#bac3dd",
 };
 
 const greenScale = {
   escuro: "#00802f",
-  claro: "#C5F2C7",
+  claro: "#c5f2c7",
   normal: "#00b050",
 };
 
@@ -49,6 +50,7 @@ const sysPalette: PaletteOptions = {
     light: blueScale.claro,
     main: blueScale.normal,
     dark: blueScale.escuro,
+    contrastText: blueScale.fundo,
   },
   success: {
     light: greenScale.claro,
