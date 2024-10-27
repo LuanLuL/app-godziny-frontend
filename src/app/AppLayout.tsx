@@ -23,7 +23,7 @@ export const AppLayout: React.FC = () => {
     useState<IShowNotificationProps>(defaultState);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleCloseNotification = useCallback((callBack?: () => void) => {
     setShowNotification(defaultState);

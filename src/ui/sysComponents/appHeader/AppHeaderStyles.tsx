@@ -1,6 +1,7 @@
-import { Box, Button, styled } from "@mui/material";
+import { Box, Button, styled, SxProps, Theme } from "@mui/material";
 import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import MenuIcon from "@mui/icons-material/Menu";
 
 interface IOptionButton {
   includeborder: "true" | "false";
@@ -9,7 +10,7 @@ interface IOptionButton {
 const HeaderBody = styled(Box)(({ theme }) => ({
   width: "100%",
   height: sysSizing.contentPb,
-  padding: `${sysSizing.spacingRemMd} ${sysSizing.spacingRemLg}`,
+  padding: `${sysSizing.spacingRemMd} 0px`,
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -24,7 +25,9 @@ const NotificationsIcon = styled(NotificationsNoneIcon)(({ theme }) => ({
 }));
 
 const HeaderTitle = styled(Box)(({ theme }) => ({
-  alignSelf: "flex-start",
+  display: "flex",
+  justifyContent: "flex-start",
+  alignItems: "center",
   flexGrow: 4,
 }));
 
@@ -62,16 +65,30 @@ const OptionButton = styled(Button)<IOptionButton>(
   })
 );
 
+const MenuIconHeader = styled(MenuIcon)(({ theme }) => ({
+  color: theme.palette.common.black,
+  width: sysSizing.componentsIconSize,
+  height: sysSizing.componentsIconSize,
+  padding: 0,
+}));
+
 const appHeaderStyles = {
-  imgLogo: {
+  imgLogo: (isMobile: boolean): SxProps<Theme> => ({
     width: "100%",
     height: "auto",
-    maxWidth: "160px",
-  },
-  imgAvatar: {
+    objectFit: "contain",
+    marginLeft: isMobile ? "0px" : sysSizing.spacingRemLg,
+    maxWidth: isMobile ? "130px" : "160px",
+  }),
+  imgAvatar: (isMobile: boolean): SxProps<Theme> => ({
     width: "40px",
     height: "40px",
     borderRadius: sysSizing.radiusInfinite,
+    marginRight: isMobile ? sysSizing.spacingRemMd : sysSizing.spacingRemLg,
+  }),
+  containerMenuIconHeader: {
+    marginRight: sysSizing.spacingFixedXs,
+    marginLeft: sysSizing.spacingFixedSm,
   },
 };
 
@@ -81,6 +98,7 @@ export {
   HeaderRoutes,
   HeaderOptions,
   OptionButton,
+  MenuIconHeader,
   appHeaderStyles,
   NotificationsIcon,
 };

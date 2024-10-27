@@ -1,17 +1,22 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Example } from "../ui/sysPages/example/Example";
-import { Box, Typography } from "@mui/material";
+import { Box, SvgIconProps, Typography } from "@mui/material";
+import FolderZipIcon from "@mui/icons-material/FolderZip";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import SchoolIcon from "@mui/icons-material/School";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 export interface IRoutes {
   label: string;
   path: string;
+  icon: React.ReactElement<SvgIconProps>;
 }
 
 export const sysRoutes: IRoutes[] = [
-  { label: "Exemplo", path: "/example" },
-  { label: "Atividades", path: "/atividades" },
-  { label: "Cursos", path: "/cursos" },
-  { label: "Usuários", path: "/usuarios" },
+  { label: "Exemplo", path: "/example", icon: <FolderZipIcon /> },
+  { label: "Atividades", path: "/atividades", icon: <EventNoteIcon /> },
+  { label: "Cursos", path: "/cursos", icon: <SchoolIcon /> },
+  { label: "Usuários", path: "/usuarios", icon: <BadgeIcon /> },
 ];
 
 export const AppRouterSwitch = () => {
