@@ -1,7 +1,7 @@
 import { Box, Button, styled, SxProps, Theme } from "@mui/material";
 import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import MenuIcon from "@mui/icons-material/Menu";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 
 interface IOptionButton {
   includeborder: "true" | "false";
@@ -18,7 +18,7 @@ const HeaderBody = styled(Box)(({ theme }) => ({
   zIndex: 5,
 }));
 
-const NotificationsIcon = styled(NotificationsNoneIcon)(({ theme }) => ({
+const NotificationsIcon = styled(ShieldOutlinedIcon)(({ theme }) => ({
   color: theme.palette.common.black,
   width: sysSizing.componentsIconSize,
   height: sysSizing.componentsIconSize,

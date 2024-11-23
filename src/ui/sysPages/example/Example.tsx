@@ -149,6 +149,7 @@ export const Example = () => {
             onSubmit={() => {
               console.log("Você escolheu entre um ou outro");
             }}
+            disabled
           />
         </Box>
       </Box>
