@@ -13,10 +13,26 @@ export interface IRoutes {
 }
 
 export const sysRoutes: IRoutes[] = [
-  { label: "Exemplo", path: "/example", icon: <FolderZipIcon /> },
-  { label: "Atividades", path: "/atividades", icon: <EventNoteIcon /> },
-  { label: "Cursos", path: "/cursos", icon: <SchoolIcon /> },
-  { label: "Usuários", path: "/usuarios", icon: <BadgeIcon /> },
+  {
+    label: "Exemplo",
+    path: "/example",
+    icon: <FolderZipIcon sx={{ width: 23, height: 23 }} />,
+  },
+  {
+    label: "Atividades",
+    path: "/atividades",
+    icon: <EventNoteIcon sx={{ width: 23, height: 23 }} />,
+  },
+  {
+    label: "Cursos",
+    path: "/cursos",
+    icon: <SchoolIcon sx={{ width: 23, height: 23 }} />,
+  },
+  {
+    label: "Usuários",
+    path: "/usuarios",
+    icon: <BadgeIcon sx={{ width: 23, height: 23 }} />,
+  },
 ];
 
 export const AppRouterSwitch = () => {

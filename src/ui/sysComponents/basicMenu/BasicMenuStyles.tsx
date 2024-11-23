@@ -1,4 +1,5 @@
 import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
+import sysPalette from "../../sysMaterialUi/colors/sysColors";
 
 const BasicMenuStyles = {
   iconButton: {
@@ -6,18 +7,13 @@ const BasicMenuStyles = {
     height: sysSizing.spacingFixedLg,
   },
   menu: {
-    "& .css-1v6ch8a-MuiButtonBase-root-MuiMenuItem-root": {
-      padding: "8px 16px",
+    ".MuiMenu-list": {
+      backgroundColor: `${sysPalette.common?.white}`,
     },
-    "& .css-8oiess-MuiPaper-root-MuiPopover-paper-MuiMenu-paper": {
-      backgroundColor: "#ffffff",
+    ".MuiMenuItem-root": {
       minWidth: "133px",
+      padding: `${sysSizing.spacingFixedSm} ${sysSizing.spacingFixedMd}`,
     },
-    "& .css-8oiess-MuiPaper-root-MuiPopover-paper-MuiMenu-paper::-webkit-scrollbar":
-      {
-        width: "4px",
-        height: "4px",
-      },
   },
 };
 
