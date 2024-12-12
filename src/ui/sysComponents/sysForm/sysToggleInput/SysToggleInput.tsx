@@ -1,43 +1,58 @@
-import React, { ChangeEvent, useState } from "react";
-import { Box, SwitchProps, Typography } from "@mui/material";
+import React, { ChangeEvent } from "react";
+import { Box, SwitchProps, Typography, useTheme } from "@mui/material";
 import { MySwitch, SysToggleInputStyles } from "./SysToggleInputStyles";
 
 interface ISysToggleInput extends SwitchProps {
   label: string;
+  value: boolean;
   maxWidth?: string;
   msgchecked?: string;
   msgunchecked?: string;
-  onSubmit: () => void;
+  changeValue: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const SysToggleInput: React.FC<ISysToggleInput> = ({
   label,
-  onSubmit,
+  value,
   maxWidth = "1000px",
   msgchecked = "Ativo",
   msgunchecked = "Inativo",
+  changeValue,
   ...props
 }) => {
-  const [isChecked, setIsChecked] = useState(props.checked);
+  const theme = useTheme();
+
   function onChange(event: ChangeEvent<HTMLInputElement>, checked: boolean) {
-    setIsChecked(checked);
-    onSubmit();
+    changeValue(event);
   }
 
   return (
     <Box sx={SysToggleInputStyles.container}>
       <Box sx={SysToggleInputStyles.boxLabel}>
         <Typography
-          sx={{ maxWidth: maxWidth, ...SysToggleInputStyles.label }}
+          sx={{
+            maxWidth: maxWidth,
+            color: props.disabled
+              ? theme.palette.info.light
+              : "rgba(0,0,0, 0.72)",
+            ...SysToggleInputStyles.label,
+          }}
           variant="body2"
         >
           {label ?? "Escolha um valor"}
         </Typography>
       </Box>
       <Box sx={SysToggleInputStyles.body}>
-        <MySwitch onChange={onChange} {...props} />
-        <Typography variant="body1">
-          {isChecked ? msgchecked : msgunchecked}
+        <MySwitch onChange={onChange} checked={value} {...props} />
+        <Typography
+          variant="body1"
+          sx={{
+            color: props.disabled
+              ? theme.palette.info.light
+              : "rgba(0,0,0, 0.87)",
+          }}
+        >
+          {value ? msgchecked : msgunchecked}
         </Typography>
       </Box>
     </Box>

@@ -1,3 +1,4 @@
+import React, { ChangeEvent, useState } from "react";
 import { Box } from "@mui/material";
 import { IconTooltip } from "../../sysComponents/iconTooltip/IconTooltip";
 import TuneIcon from "@mui/icons-material/Tune";
@@ -9,6 +10,8 @@ import { SysButton } from "../../sysComponents/sysForm/sysButton/SysButton";
 import { SysToggleInput } from "../../sysComponents/sysForm/sysToggleInput/SysToggleInput";
 
 export const Example = () => {
+  const [valueSwich, setValueSwich] = useState<boolean>(true);
+
   const optionsToBasicMenu: optionsToBasicMenu[] = [
     {
       label: "Opção 1",
@@ -146,9 +149,20 @@ export const Example = () => {
             label="Label"
             msgchecked="Positivo"
             msgunchecked="Negativo"
-            onSubmit={() => {
+            changeValue={(event: ChangeEvent<HTMLInputElement>) => {
+              setValueSwich(event.target.checked);
+              console.log("Você escolheu entre um ou outro", event);
+            }}
+            value={valueSwich}
+          />
+          <SysToggleInput
+            label="Status"
+            msgchecked="Disabled"
+            msgunchecked="Disabled"
+            changeValue={() => {
               console.log("Você escolheu entre um ou outro");
             }}
+            value={valueSwich}
             disabled
           />
         </Box>

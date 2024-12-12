@@ -11,6 +11,16 @@ const MySwitch = styled(Switch)(({ theme }) => ({
   "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
     backgroundColor: theme.palette.primary.contrastText,
   },
+  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track + .MuiSwitch-switchBase.Mui-disabled":
+    {
+      color: theme.palette.info.light,
+    },
+  "& .MuiSwitch-switchBase.Mui-disabled": {
+    color: theme.palette.info.light,
+  },
+  "& .MuiSwitch-switchBase.Mui-disabled + .MuiSwitch-track": {
+    backgroundColor: theme.palette.info.light,
+  },
 }));
 
 const SysToggleInputStyles = {
