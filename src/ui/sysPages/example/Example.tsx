@@ -7,10 +7,35 @@ import {
   optionsToBasicMenu,
 } from "../../sysComponents/basicMenu/BasicMenu";
 import { SysButton } from "../../sysComponents/sysForm/sysButton/SysButton";
-import { SysToggleInput } from "../../sysComponents/sysForm/sysToggleInput/SysToggleInput";
+import { SysToggleField } from "../../sysComponents/sysForm/sysToggleField/SysToggleField";
+import { SysTextField } from "../../sysComponents/sysForm/sysTextField/SysTextField";
+
+type Form = {
+  toggleInput: boolean;
+  textInput: string;
+};
 
 export const Example = () => {
-  const [valueSwich, setValueSwich] = useState<boolean>(true);
+  const [valueForm, setValueForm] = useState<Form>({
+    toggleInput: false,
+    textInput: "",
+  });
+
+  console.log("FORMULÁRIO = ", valueForm);
+
+  const handleChange = (event: any) => {
+    setValueForm({
+      ...valueForm,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleBoolean = (event: any) => {
+    setValueForm({
+      ...valueForm,
+      [event.target.name]: event.target.checked,
+    });
+  };
 
   const optionsToBasicMenu: optionsToBasicMenu[] = [
     {
@@ -145,25 +170,39 @@ export const Example = () => {
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row", gap: "30px" }}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <SysToggleInput
-            label="Label"
+          <SysToggleField
+            label="Label toggleInput"
+            name="toggleInput"
             msgchecked="Positivo"
             msgunchecked="Negativo"
-            changeValue={(event: ChangeEvent<HTMLInputElement>) => {
-              setValueSwich(event.target.checked);
-              console.log("Você escolheu entre um ou outro", event);
-            }}
-            value={valueSwich}
+            changeValue={handleBoolean}
+            value={valueForm.toggleInput}
           />
-          <SysToggleInput
-            label="Status"
+          <SysToggleField
+            label="Label toggleInput Disabled"
+            name="toggleInput"
             msgchecked="Disabled"
             msgunchecked="Disabled"
-            changeValue={() => {
-              console.log("Você escolheu entre um ou outro");
-            }}
-            value={valueSwich}
+            changeValue={handleBoolean}
+            value={valueForm.toggleInput}
             disabled
+          />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            width: "360px",
+          }}
+        >
+          <SysTextField
+            label="Label textInput"
+            name="textInput"
+            placeholder="Digite o valor do textInput"
+            value={valueForm.textInput}
+            changeValue={handleChange}
+            maxWidth="360px"
           />
         </Box>
       </Box>

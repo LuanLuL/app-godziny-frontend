@@ -23,7 +23,7 @@ const MySwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const SysToggleInputStyles = {
+const SysToggleFieldStyles = {
   container: {
     display: "flex",
     flexDirection: "column",
@@ -46,4 +46,4 @@ const SysToggleInputStyles = {
   },
 };
 
-export { MySwitch, SysToggleInputStyles };
+export { MySwitch, SysToggleFieldStyles };

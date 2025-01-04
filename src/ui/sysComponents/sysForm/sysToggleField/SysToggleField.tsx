@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from "react";
 import { Box, SwitchProps, Typography, useTheme } from "@mui/material";
-import { MySwitch, SysToggleInputStyles } from "./SysToggleInputStyles";
+import { MySwitch, SysToggleFieldStyles } from "./SysToggleFieldStyles";
 
-interface ISysToggleInput extends SwitchProps {
+interface ISysToggleField extends SwitchProps {
   label: string;
   value: boolean;
   maxWidth?: string;
@@ -11,7 +11,7 @@ interface ISysToggleInput extends SwitchProps {
   changeValue: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const SysToggleInput: React.FC<ISysToggleInput> = ({
+export const SysToggleField: React.FC<ISysToggleField> = ({
   label,
   value,
   maxWidth = "1000px",
@@ -27,22 +27,22 @@ export const SysToggleInput: React.FC<ISysToggleInput> = ({
   }
 
   return (
-    <Box sx={SysToggleInputStyles.container}>
-      <Box sx={SysToggleInputStyles.boxLabel}>
+    <Box sx={SysToggleFieldStyles.container}>
+      <Box sx={SysToggleFieldStyles.boxLabel}>
         <Typography
           sx={{
             maxWidth: maxWidth,
             color: props.disabled
               ? theme.palette.info.light
               : "rgba(0,0,0, 0.72)",
-            ...SysToggleInputStyles.label,
+            ...SysToggleFieldStyles.label,
           }}
           variant="body2"
         >
           {label ?? "Escolha um valor"}
         </Typography>
       </Box>
-      <Box sx={SysToggleInputStyles.body}>
+      <Box sx={SysToggleFieldStyles.body}>
         <MySwitch onChange={onChange} checked={value} {...props} />
         <Typography
           variant="body1"
