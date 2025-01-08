@@ -204,6 +204,25 @@ export const Example = () => {
             changeValue={handleChange}
             maxWidth="360px"
           />
+          <SysTextField
+            label="Label textInput Error"
+            name="textInput"
+            placeholder="Digite o valor do textInput"
+            value={valueForm.textInput}
+            changeValue={handleChange}
+            maxWidth="360px"
+            error
+            msgError="Error message textInput"
+          />
+          <SysTextField
+            label="Label textInput Disabled"
+            name="textInput"
+            placeholder="Digite o valor do textInput"
+            value={valueForm.textInput}
+            changeValue={handleChange}
+            maxWidth="360px"
+            disabled
+          />
         </Box>
       </Box>
     </Box>

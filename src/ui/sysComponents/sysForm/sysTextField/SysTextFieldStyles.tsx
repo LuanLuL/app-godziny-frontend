@@ -4,9 +4,9 @@ import sysSizing from "../../../sysMaterialUi/sizing/sysSizes";
 const MyTextField = styled(TextField)(({ theme }) => ({
   width: "100%",
   "& .MuiInputBase-root": {
-    border: `1px solid ${theme.palette.divider}`,
     borderRadius: sysSizing.radiusXs,
     maxHeight: "40px",
+    border: "none",
   },
   "& .MuiOutlinedInput-root": {
     "&:hover fieldset": {
@@ -15,12 +15,31 @@ const MyTextField = styled(TextField)(({ theme }) => ({
     "&.Mui-focused fieldset": {
       borderColor: theme.palette.primary.main,
     },
+    "&.Mui-error fieldset": {
+      borderColor: theme.palette.error.main,
+    },
+    "&.Mui-error:hover fieldset": {
+      borderColor: theme.palette.error.main,
+    },
+    "&.Mui-error.Mui-focused fieldset": {
+      borderColor: theme.palette.error.main,
+    },
+    "&.Mui-disabled fieldset": {
+      border: "none",
+    },
+    "&.Mui-disabled": {
+      backgroundColor: "#e7e7e7",
+    },
   },
   "& .MuiInputBase-input::placeholder": {
     color: theme.palette.info.light,
   },
   "&:hover .MuiInputBase-input::placeholder": {
     color: theme.palette.common.black,
+  },
+  "& .MuiInputBase-input.Mui-disabled": {
+    color: theme.palette.common.black,
+    WebkitTextFillColor: theme.palette.common.black,
   },
 }));
 
@@ -30,13 +49,23 @@ const SysTextFieldStyles = {
     flexDirection: "column",
     alignItems: "flex-start",
     padding: sysSizing.base.baseFixed075,
-    gap: sysSizing.base.baseFixed075,
-    Width: "360px",
   },
   label: {
     overflow: "hidden",
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
+    marginBottom: sysSizing.base.baseFixed075,
+  },
+  errorMessageBody: {
+    marginTop: sysSizing.spacingFixedXs,
+  },
+  errorMessageText: {
+    display: "-webkit-box",
+    overflow: "hidden",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    lineHeight: "13.84px",
+    letterSpacing: "0.025em",
   },
 };
 

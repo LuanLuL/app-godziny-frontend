@@ -7,7 +7,7 @@ type ISysTextField = {
   value: string;
   placeholder?: string;
   maxWidth?: string;
-  error?: string;
+  error?: boolean;
   msgError?: string;
   changeValue: (event: ChangeEvent<HTMLInputElement>) => void;
 } & TextFieldProps;
@@ -46,8 +46,29 @@ export const SysTextField: React.FC<ISysTextField> = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        sx={{
+          maxWidth: maxWidth,
+        }}
+        error={error}
+        disabled={props.disabled}
         {...props}
       />
+      {error && (
+        <Box
+          sx={{
+            maxWidth: maxWidth,
+            ...SysTextFieldStyles.errorMessageBody,
+          }}
+        >
+          <Typography
+            variant="caption"
+            color="error"
+            sx={SysTextFieldStyles.errorMessageText}
+          >
+            {msgError}
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };
