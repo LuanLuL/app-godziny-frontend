@@ -38,8 +38,8 @@ const MyTextField = styled(TextField)(({ theme }) => ({
     color: theme.palette.common.black,
   },
   "& .MuiInputBase-input.Mui-disabled": {
-    color: theme.palette.common.black,
-    WebkitTextFillColor: theme.palette.common.black,
+    color: theme.palette.text.disabled,
+    WebkitTextFillColor: theme.palette.text.disabled,
   },
 }));
 
@@ -58,6 +58,11 @@ const SysTextFieldStyles = {
   },
   errorMessageBody: {
     marginTop: sysSizing.spacingFixedXs,
+    width: "100%",
+    display: "flex",
+    gap: sysSizing.spacingFixedSm,
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
   },
   errorMessageText: {
     display: "-webkit-box",
@@ -66,6 +71,11 @@ const SysTextFieldStyles = {
     WebkitBoxOrient: "vertical",
     lineHeight: "13.84px",
     letterSpacing: "0.025em",
+  },
+  showNumberCaractersText: {
+    minWidth: "28px",
+    textAlign: "right",
+    color: "rgba(0,0,0, 0.72)",
   },
 };
 

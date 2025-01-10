@@ -9,6 +9,8 @@ type ISysTextField = {
   maxWidth?: string;
   error?: boolean;
   msgError?: string;
+  showNumberCaracters?: boolean;
+  maxLength?: number;
   changeValue: (event: ChangeEvent<HTMLInputElement>) => void;
 } & TextFieldProps;
 
@@ -19,6 +21,8 @@ export const SysTextField: React.FC<ISysTextField> = ({
   maxWidth = "1000px",
   error = false,
   msgError = "Algo deu errado, por favor, tente novamente.",
+  showNumberCaracters = false,
+  maxLength = 15,
   changeValue,
   ...props
 }) => {
@@ -27,6 +31,14 @@ export const SysTextField: React.FC<ISysTextField> = ({
   function onChange(event: ChangeEvent<HTMLInputElement>) {
     changeValue(event);
   }
+
+  const showNumberCaractersComponent = () => {
+    return (
+      <Box sx={SysTextFieldStyles.showNumberCaractersText}>
+        <Typography variant="caption">{`${value.length}/${maxLength}`}</Typography>
+      </Box>
+    );
+  };
 
   return (
     <Box sx={SysTextFieldStyles.container}>
@@ -51,15 +63,11 @@ export const SysTextField: React.FC<ISysTextField> = ({
         }}
         error={error}
         disabled={props.disabled}
+        inputProps={{ maxLength: showNumberCaracters ? maxLength : undefined }}
         {...props}
       />
-      {error && (
-        <Box
-          sx={{
-            maxWidth: maxWidth,
-            ...SysTextFieldStyles.errorMessageBody,
-          }}
-        >
+      <Box sx={[SysTextFieldStyles.errorMessageBody, { maxWidth: maxWidth }]}>
+        {error && (
           <Typography
             variant="caption"
             color="error"
@@ -67,8 +75,9 @@ export const SysTextField: React.FC<ISysTextField> = ({
           >
             {msgError}
           </Typography>
-        </Box>
-      )}
+        )}
+        {showNumberCaracters && showNumberCaractersComponent()}
+      </Box>
     </Box>
   );
 };

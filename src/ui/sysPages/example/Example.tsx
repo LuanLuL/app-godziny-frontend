@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material";
 import { IconTooltip } from "../../sysComponents/iconTooltip/IconTooltip";
 import TuneIcon from "@mui/icons-material/Tune";
@@ -168,7 +168,14 @@ export const Example = () => {
           />
         </Box>
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "row", gap: "30px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "30px",
+          flexWrap: "wrap",
+        }}
+      >
         <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <SysToggleField
             label="Label toggleInput"
@@ -193,7 +200,7 @@ export const Example = () => {
             display: "flex",
             flexDirection: "column",
             gap: "10px",
-            width: "360px",
+            width: "300px",
           }}
         >
           <SysTextField
@@ -202,7 +209,7 @@ export const Example = () => {
             placeholder="Digite o valor do textInput"
             value={valueForm.textInput}
             changeValue={handleChange}
-            maxWidth="360px"
+            maxWidth="300px"
           />
           <SysTextField
             label="Label textInput Error"
@@ -210,9 +217,11 @@ export const Example = () => {
             placeholder="Digite o valor do textInput"
             value={valueForm.textInput}
             changeValue={handleChange}
-            maxWidth="360px"
+            maxWidth="300px"
             error
-            msgError="Error message textInput"
+            msgError="É preciso digitar no mínimo 30 caracteres neste campo"
+            showNumberCaracters
+            maxLength={30}
           />
           <SysTextField
             label="Label textInput Disabled"
@@ -220,7 +229,7 @@ export const Example = () => {
             placeholder="Digite o valor do textInput"
             value={valueForm.textInput}
             changeValue={handleChange}
-            maxWidth="360px"
+            maxWidth="300px"
             disabled
           />
         </Box>
