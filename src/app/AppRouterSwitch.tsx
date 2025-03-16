@@ -10,6 +10,7 @@ export interface IRoutes {
   label: string;
   path: string;
   icon: React.ReactElement<SvgIconProps>;
+  protect: boolean;
 }
 
 export const sysRoutes: IRoutes[] = [
@@ -17,21 +18,25 @@ export const sysRoutes: IRoutes[] = [
     label: "Exemplo",
     path: "/example",
     icon: <FolderZipIcon sx={{ width: 23, height: 23 }} />,
+    protect: false,
   },
   {
     label: "Atividades",
     path: "/atividades",
     icon: <EventNoteIcon sx={{ width: 23, height: 23 }} />,
+    protect: false,
   },
   {
     label: "Cursos",
     path: "/cursos",
     icon: <SchoolIcon sx={{ width: 23, height: 23 }} />,
+    protect: true,
   },
   {
     label: "Usuários",
     path: "/usuarios",
     icon: <BadgeIcon sx={{ width: 23, height: 23 }} />,
+    protect: true,
   },
 ];
 

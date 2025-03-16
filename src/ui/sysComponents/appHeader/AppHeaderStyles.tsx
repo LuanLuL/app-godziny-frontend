@@ -1,11 +1,7 @@
-import { Box, Button, styled, SxProps, Theme } from "@mui/material";
+import { Box, styled, SxProps, Theme } from "@mui/material";
 import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
-
-interface IOptionButton {
-  includeborder: "true" | "false";
-}
 
 const HeaderBody = styled(Box)(({ theme }) => ({
   width: "100%",
@@ -48,23 +44,6 @@ const HeaderOptions = styled(Box)(({ theme }) => ({
   gap: sysSizing.spacingFixedMd,
 }));
 
-const OptionButton = styled(Button)<IOptionButton>(
-  ({ theme, includeborder }) => ({
-    height: "40px",
-    padding: "10px 12px",
-    backgroundColor: theme.palette.common.white,
-    color: theme.palette.common.black,
-    transition: "background-color 0.3s ease",
-    "&:hover": {
-      backgroundColor: theme.palette.background.paper,
-    },
-    ...(includeborder === "true" && {
-      color: `${theme.palette.primary.main}`,
-      borderBottom: `2.5px solid ${theme.palette.primary.main}`,
-    }),
-  })
-);
-
 const MenuIconHeader = styled(MenuIcon)(({ theme }) => ({
   color: theme.palette.common.black,
   width: sysSizing.componentsIconSize,
@@ -97,7 +76,6 @@ export {
   HeaderTitle,
   HeaderRoutes,
   HeaderOptions,
-  OptionButton,
   MenuIconHeader,
   appHeaderStyles,
   NotificationsIcon,

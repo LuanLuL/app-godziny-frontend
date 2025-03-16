@@ -1,30 +1,24 @@
 import React, { useContext, useState } from "react";
-import { Box, IconButton, Typography, Drawer } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Box, IconButton, Drawer } from "@mui/material";
 import {
   HeaderBody,
   HeaderTitle,
   HeaderRoutes,
   HeaderOptions,
   appHeaderStyles,
-  OptionButton,
   MenuIconHeader,
   NotificationsIcon,
 } from "./AppHeaderStyles";
-import { sysRoutes } from "../../../app/AppRouterSwitch";
 import logo from "../../../assets/imgs/logoGodzinyApp.png";
 import avatar from "../../../assets/imgs/avatar.png";
 import { SysAppLayoutContext } from "../../../app/AppLayout";
-import { DrawerHeader } from "./components/DrawerAppBar";
+import { DrawerHeader } from "./components//DrawerAppBar/DrawerAppBar";
+import BasicTabs from "./components/BasicTabs/BasicTabs";
 
 export const AppHeader: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
   const { isMobile } = useContext(SysAppLayoutContext);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const handleClick = (path: string) => {
-    navigate(path);
-  };
+
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
@@ -48,24 +42,7 @@ export const AppHeader: React.FC = () => {
           />
         </HeaderTitle>
         <HeaderRoutes>
-          {!isMobile && (
-            <Box>
-              {sysRoutes.map((route, index) => (
-                <OptionButton
-                  key={`route${index}:${route.label}`}
-                  onClick={() => handleClick(route.path)}
-                  includeborder={
-                    location.pathname === route.path ? "true" : "false"
-                  }
-                  sx={{
-                    borderRadius: location.pathname === route.path ? 0 : "",
-                  }}
-                >
-                  <Typography variant="body1">{route.label}</Typography>
-                </OptionButton>
-              ))}
-            </Box>
-          )}
+          {!isMobile && <BasicTabs />}
           <HeaderOptions>
             <IconButton action={() => {}}>
               <NotificationsIcon />
@@ -79,8 +56,12 @@ export const AppHeader: React.FC = () => {
           </HeaderOptions>
         </HeaderRoutes>
       </HeaderBody>
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-        <DrawerHeader navigate={handleClick} control={toggleDrawer} />
+      <Drawer
+        anchor="left"
+        open={isMobile ? drawerOpen : false}
+        onClose={toggleDrawer(false)}
+      >
+        <DrawerHeader control={toggleDrawer} />
       </Drawer>
     </>
   );
