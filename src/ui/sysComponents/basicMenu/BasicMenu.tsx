@@ -6,14 +6,14 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { BasicMenuStyles } from "./BasicMenuStyles";
 import Typography from "@mui/material/Typography";
 
-export type optionsToBasicMenu = {
+export type IoptionsToBasicMenu = {
   label: string;
   onClick: () => void;
 };
 
 interface IBasicMenuProps {
   indexOfComponent: string;
-  options: optionsToBasicMenu[];
+  options: IoptionsToBasicMenu[];
 }
 
 export const BasicMenu: React.FC<IBasicMenuProps> = ({

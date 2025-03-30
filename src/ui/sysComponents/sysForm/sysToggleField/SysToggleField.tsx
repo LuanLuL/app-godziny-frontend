@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
-import { Box, SwitchProps, Typography, useTheme } from "@mui/material";
+import { Box, SwitchProps, Typography } from "@mui/material";
 import { MySwitch, SysToggleFieldStyles } from "./SysToggleFieldStyles";
+import { SysSimpleLabel } from "../sysSimpleLabel/SysSimpleLabel";
 
 interface ISysToggleField extends SwitchProps {
   label: string;
@@ -20,8 +21,6 @@ export const SysToggleField: React.FC<ISysToggleField> = ({
   changeValue,
   ...props
 }) => {
-  const theme = useTheme();
-
   function onChange(event: ChangeEvent<HTMLInputElement>, checked: boolean) {
     changeValue(event);
   }
@@ -29,27 +28,18 @@ export const SysToggleField: React.FC<ISysToggleField> = ({
   return (
     <Box sx={SysToggleFieldStyles.container}>
       <Box sx={SysToggleFieldStyles.boxLabel}>
-        <Typography
-          sx={{
-            maxWidth: maxWidth,
-            color: props.disabled
-              ? theme.palette.info.light
-              : "rgba(0,0,0, 0.72)",
-            ...SysToggleFieldStyles.label,
-          }}
-          variant="body2"
-        >
-          {label ?? "Escolha um valor"}
-        </Typography>
+        <SysSimpleLabel
+          label={label ?? "Escolha um valor"}
+          disabled={props.disabled ?? false}
+        />
       </Box>
       <Box sx={SysToggleFieldStyles.body}>
         <MySwitch onChange={onChange} checked={value} {...props} />
         <Typography
           variant="body1"
           sx={{
-            color: props.disabled
-              ? theme.palette.info.light
-              : "rgba(0,0,0, 0.87)",
+            color: (theme) =>
+              props.disabled ? theme.palette.info.light : "rgba(0,0,0, 0.87)",
           }}
         >
           {value ? msgchecked : msgunchecked}

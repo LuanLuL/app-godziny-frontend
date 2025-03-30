@@ -4,21 +4,27 @@ import { IconTooltip } from "../../sysComponents/iconTooltip/IconTooltip";
 import TuneIcon from "@mui/icons-material/Tune";
 import {
   BasicMenu,
-  optionsToBasicMenu,
+  IoptionsToBasicMenu,
 } from "../../sysComponents/basicMenu/BasicMenu";
 import { SysButton } from "../../sysComponents/sysForm/sysButton/SysButton";
 import { SysToggleField } from "../../sysComponents/sysForm/sysToggleField/SysToggleField";
 import { SysTextField } from "../../sysComponents/sysForm/sysTextField/SysTextField";
+import {
+  IOptionToSysRadioField,
+  SysRadioField,
+} from "../../sysComponents/sysForm/sysRadioField/SysRadioField";
 
 type Form = {
   toggleInput: boolean;
   textInput: string;
+  radioInput: string;
 };
 
 export const Example = () => {
   const [valueForm, setValueForm] = useState<Form>({
     toggleInput: false,
     textInput: "",
+    radioInput: "",
   });
 
   console.log("FORMULÁRIO = ", valueForm);
@@ -37,7 +43,7 @@ export const Example = () => {
     });
   };
 
-  const optionsToBasicMenu: optionsToBasicMenu[] = [
+  const optionsToBasicMenu: IoptionsToBasicMenu[] = [
     {
       label: "Opção 1",
       onClick: () => {
@@ -67,6 +73,21 @@ export const Example = () => {
       onClick: () => {
         console.log("Selecionei a opção 5");
       },
+    },
+  ];
+
+  const optionsToRadioField: IOptionToSysRadioField[] = [
+    {
+      label: "Opção 1",
+      value: "option1",
+    },
+    {
+      label: "Opção 2",
+      value: "option2",
+    },
+    {
+      label: "Opção 3",
+      value: "option3",
     },
   ];
 
@@ -230,6 +251,41 @@ export const Example = () => {
             value={valueForm.textInput}
             changeValue={handleChange}
             maxWidth="300px"
+            disabled
+          />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            width: "420px",
+          }}
+        >
+          <SysRadioField
+            label="Label radioInput Check"
+            name="radioInput"
+            value={valueForm.radioInput}
+            options={optionsToRadioField}
+            changeValue={handleChange}
+            maxWidth="420px"
+            useCheckedIcon
+          />
+          <SysRadioField
+            label="Label radioInput"
+            name="radioInput"
+            value={valueForm.radioInput}
+            options={optionsToRadioField}
+            changeValue={handleChange}
+            maxWidth="420px"
+          />
+          <SysRadioField
+            label="Label radioInput Disabled"
+            name="radioInput"
+            value={valueForm.radioInput}
+            options={optionsToRadioField}
+            changeValue={handleChange}
+            maxWidth="420px"
             disabled
           />
         </Box>
