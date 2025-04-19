@@ -1,14 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Box, IconButton, Drawer } from "@mui/material";
-import {
-  HeaderBody,
-  HeaderTitle,
-  HeaderRoutes,
-  HeaderOptions,
-  appHeaderStyles,
-  MenuIconHeader,
-  NotificationsIcon,
-} from "./AppHeaderStyles";
+import Styles, { appHeaderStyles } from "./AppHeaderStyles";
 import logo from "../../../assets/imgs/logoGodzinyApp.png";
 import avatar from "../../../assets/imgs/avatar.png";
 import { SysAppLayoutContext } from "../../../app/AppLayout";
@@ -25,14 +17,14 @@ export const AppHeader: React.FC = () => {
 
   return (
     <>
-      <HeaderBody>
-        <HeaderTitle>
+      <Styles.HeaderBody>
+        <Styles.HeaderTitle>
           {isMobile && (
-            <Box sx={appHeaderStyles.containerMenuIconHeader}>
+            <Styles.ContainerMenuIconHeader>
               <IconButton onClick={toggleDrawer(true)}>
-                <MenuIconHeader />
+                <Styles.MenuIconHeader />
               </IconButton>
-            </Box>
+            </Styles.ContainerMenuIconHeader>
           )}
           <Box
             component="img"
@@ -40,12 +32,12 @@ export const AppHeader: React.FC = () => {
             alt="logoApp"
             sx={appHeaderStyles.imgLogo(isMobile)}
           />
-        </HeaderTitle>
-        <HeaderRoutes>
+        </Styles.HeaderTitle>
+        <Styles.HeaderRoutes>
           {!isMobile && <BasicTabs />}
-          <HeaderOptions>
+          <Styles.HeaderOptions>
             <IconButton action={() => {}}>
-              <NotificationsIcon />
+              <Styles.NotificationsIcon />
             </IconButton>
             <Box
               component="img"
@@ -53,9 +45,10 @@ export const AppHeader: React.FC = () => {
               alt="avatarApp"
               sx={appHeaderStyles.imgAvatar(isMobile)}
             />
-          </HeaderOptions>
-        </HeaderRoutes>
-      </HeaderBody>
+          </Styles.HeaderOptions>
+        </Styles.HeaderRoutes>
+      </Styles.HeaderBody>
+      <Box></Box>
       <Drawer
         anchor="left"
         open={isMobile ? drawerOpen : false}
