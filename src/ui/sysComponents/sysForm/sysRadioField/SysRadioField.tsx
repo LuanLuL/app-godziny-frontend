@@ -58,6 +58,7 @@ export const SysRadioField: React.FC<ISysRadioField> = ({
       >
         {options.map((item, index) => (
           <Styles.MyFormControlLabel
+            key={`keyRadioInput${index}`}
             disabled={props.disabled ?? false}
             value={item.value}
             control={

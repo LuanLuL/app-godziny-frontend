@@ -1,12 +1,10 @@
-import {
-  Box,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import { sysAppBarOptions } from "../../../appModuleManeger/AppModuleManeger";
 import Styles, { drawerAppBarStyles } from "./DrawerAppBarStyles";
 import CloseIcon from "@mui/icons-material/Close";
@@ -29,7 +27,7 @@ export const DrawerHeader: React.FC<IDrawerHeaderProps> = ({ control }) => {
     <Styles.ContainerOptionsDrawerAppBar role="presentation">
       <List>
         {sysAppBarOptions
-          .filter((item) => item.protect)
+          .filter((item) => item.active)
           .map((route, index) => (
             <ListItem
               key={`routeDrawerBar${index}:${route.label}`}
@@ -50,7 +48,7 @@ export const DrawerHeader: React.FC<IDrawerHeaderProps> = ({ control }) => {
     <Styles.ContainerOptionsDrawerAppBar role="presentation">
       <List>
         {sysAppBarOptions
-          .filter((item) => !item.protect)
+          .filter((item) => item.active)
           .map((route, index) => (
             <ListItem
               key={`routeDrawerBar${index}:${route.label}`}

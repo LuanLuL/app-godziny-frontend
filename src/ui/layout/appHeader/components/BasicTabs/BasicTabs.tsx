@@ -22,21 +22,23 @@ export default function BasicTabs() {
       aria-label="basic tabs example"
       sx={{ minHeight: "40px", height: "40px" }}
     >
-      {sysAppBarOptions.map((route, index) => (
-        <Tab
-          key={`route${index}:${route.label}`}
-          onClick={() => navigate(route.path)}
-          label={`${route.label}`}
-          sx={{
-            fontWeight: 400,
-            color: (theme) => theme.palette.common.black,
-            padding: "10px 12px",
-            minHeight: "40px",
-            height: "40px",
-          }}
-          {...a11yProps(index)}
-        />
-      ))}
+      {sysAppBarOptions
+        .filter((item) => item.active)
+        .map((route, index) => (
+          <Tab
+            key={`route${index}:${route.label}`}
+            onClick={() => navigate(route.path)}
+            label={`${route.label}`}
+            sx={{
+              fontWeight: 400,
+              color: (theme) => theme.palette.common.black,
+              padding: "10px 12px",
+              minHeight: "40px",
+              height: "40px",
+            }}
+            {...a11yProps(index)}
+          />
+        ))}
     </Tabs>
   );
 
