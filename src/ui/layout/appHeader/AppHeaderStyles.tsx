@@ -1,4 +1,4 @@
-import React, { ElementType } from "react";
+import { ElementType } from "react";
 import { SxProps, Theme } from "@mui/material";
 import Box, { BoxProps } from "@mui/material/Box";
 import styled from "@mui/material/styles/styled";
@@ -29,7 +29,7 @@ interface IStyles {
   NotificationsIcon: typeof NotificationsIcon;
 }
 
-const SysAppHeaderStyles: IStyles = {
+const AppHeaderStyles: IStyles = {
   HeaderBody: styled(Box)(({ theme }) => ({
     width: "100%",
     height: sysSizing.contentPb,
@@ -39,6 +39,7 @@ const SysAppHeaderStyles: IStyles = {
     alignItems: "center",
     boxShadow: `0px -1px 0px 0px ${theme.palette.divider} inset`,
     zIndex: 5,
+    position: "relative",
   })),
   HeaderTitle: styled(Box)(({ theme }) => ({
     display: "flex",
@@ -85,6 +86,6 @@ const appHeaderStyles = {
   }),
 };
 
-export default SysAppHeaderStyles;
+export default AppHeaderStyles;
 
 export { appHeaderStyles };

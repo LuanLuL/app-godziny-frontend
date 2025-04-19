@@ -1,6 +1,4 @@
 import React, { createContext, useCallback, useMemo, useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { AppRouterSwitch } from "./AppRouterSwitch";
 import {
   ISysAppLayoutContext,
   ISysGeneralComponentsCommon,
@@ -10,7 +8,7 @@ import {
   ShowNotification,
 } from "../ui/sysComponents/showNotification/ShowNotification";
 import { useTheme, useMediaQuery } from "@mui/material";
-import { AppHeader } from "../ui/sysComponents/appHeader/AppHeader";
+import { AppLayoutRefatorado } from "../ui/layout/appLayout/AppLayoutRefatorado";
 
 export const SysAppLayoutContext = createContext<ISysAppLayoutContext>(
   {} as ISysAppLayoutContext
@@ -54,10 +52,7 @@ export const AppLayout: React.FC = () => {
 
   return (
     <SysAppLayoutContext.Provider value={providerValue}>
-      <Router>
-        <AppHeader />
-        <AppRouterSwitch />
-      </Router>
+      <AppLayoutRefatorado />
       <ShowNotification {...showNotification} />
     </SysAppLayoutContext.Provider>
   );

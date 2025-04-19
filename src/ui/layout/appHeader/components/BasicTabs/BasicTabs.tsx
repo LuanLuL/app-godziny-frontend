@@ -1,25 +1,28 @@
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { sysRoutes } from "../../../../../app/AppRouterSwitch";
-import { useNavigate } from "react-router-dom";
+import {
+  getValueAppHeader,
+  sysAppBarOptions,
+} from "../../../appModuleManeger/AppModuleManeger";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+  React.useEffect(() => {
+    setValue(getValueAppHeader(pathname));
+  }, [pathname]);
 
   return (
     <Tabs
       value={value}
-      onChange={handleChange}
       aria-label="basic tabs example"
       sx={{ minHeight: "40px", height: "40px" }}
     >
-      {sysRoutes.map((route, index) => (
+      {sysAppBarOptions.map((route, index) => (
         <Tab
           key={`route${index}:${route.label}`}
           onClick={() => navigate(route.path)}

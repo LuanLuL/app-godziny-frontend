@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { sysRoutes } from "../../../../../app/AppRouterSwitch";
+import { sysAppBarOptions } from "../../../appModuleManeger/AppModuleManeger";
 import Styles, { drawerAppBarStyles } from "./DrawerAppBarStyles";
 import CloseIcon from "@mui/icons-material/Close";
 import logo from "../../../../../assets/imgs/logoGodzinyApp.png";
@@ -28,7 +28,7 @@ export const DrawerHeader: React.FC<IDrawerHeaderProps> = ({ control }) => {
   const DrawerListAdminUser = (
     <Styles.ContainerOptionsDrawerAppBar role="presentation">
       <List>
-        {sysRoutes
+        {sysAppBarOptions
           .filter((item) => item.protect)
           .map((route, index) => (
             <ListItem
@@ -49,7 +49,7 @@ export const DrawerHeader: React.FC<IDrawerHeaderProps> = ({ control }) => {
   const DrawerListUser = (
     <Styles.ContainerOptionsDrawerAppBar role="presentation">
       <List>
-        {sysRoutes
+        {sysAppBarOptions
           .filter((item) => !item.protect)
           .map((route, index) => (
             <ListItem

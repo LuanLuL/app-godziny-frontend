@@ -48,7 +48,6 @@ export const AppHeader: React.FC = () => {
           </Styles.HeaderOptions>
         </Styles.HeaderRoutes>
       </Styles.HeaderBody>
-      <Box></Box>
       <Drawer
         anchor="left"
         open={isMobile ? drawerOpen : false}

@@ -34,6 +34,9 @@ const sysDrawerAppBarStyles: IStyles = {
     height: "100vh",
     backgroundColor: `${sysPalette.common?.white}`,
     borderRight: `1px solid ${sysPalette.divider}`,
+    "&::-webkit-scrollbar": {
+      height: "0",
+    },
   })),
   ContainerMenuIconDrawerAppBar: styled(Box)(({ theme }) => ({
     marginRight: sysSizing.spacingFixedXs,
