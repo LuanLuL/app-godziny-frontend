@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
-import { Box, SwitchProps, Typography } from "@mui/material";
-import { MySwitch, SysToggleFieldStyles } from "./SysToggleFieldStyles";
+import { SwitchProps, Typography } from "@mui/material";
+import Styles from "./SysToggleFieldStyles";
 import { SysSimpleLabel } from "../sysSimpleLabel/SysSimpleLabel";
 
 interface ISysToggleField extends SwitchProps {
@@ -26,15 +26,15 @@ export const SysToggleField: React.FC<ISysToggleField> = ({
   }
 
   return (
-    <Box sx={SysToggleFieldStyles.container}>
-      <Box sx={SysToggleFieldStyles.boxLabel}>
+    <Styles.Container>
+      <Styles.BoxLabel>
         <SysSimpleLabel
           label={label ?? "Escolha um valor"}
           disabled={props.disabled ?? false}
         />
-      </Box>
-      <Box sx={SysToggleFieldStyles.body}>
-        <MySwitch onChange={onChange} checked={value} {...props} />
+      </Styles.BoxLabel>
+      <Styles.Body>
+        <Styles.MySwitch onChange={onChange} checked={value} {...props} />
         <Typography
           variant="body1"
           sx={{
@@ -44,7 +44,7 @@ export const SysToggleField: React.FC<ISysToggleField> = ({
         >
           {value ? msgchecked : msgunchecked}
         </Typography>
-      </Box>
-    </Box>
+      </Styles.Body>
+    </Styles.Container>
   );
 };

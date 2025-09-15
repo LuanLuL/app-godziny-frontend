@@ -2,7 +2,7 @@ import {
   Box,
   styled
 } from "@mui/material";
-import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
+import sysSizing from "../../../../sysMaterialUi/sizing/sysSizes";
 
 interface IContainer {
   type: "success" | "error" | "warning" | "default";

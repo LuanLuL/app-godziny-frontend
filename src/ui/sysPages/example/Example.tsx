@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box } from "@mui/material";
 import { IconTooltip } from "../../sysComponents/iconTooltip/IconTooltip";
 import TuneIcon from "@mui/icons-material/Tune";
@@ -13,21 +13,27 @@ import {
   IOptionToSysRadioField,
   SysRadioField,
 } from "../../sysComponents/sysForm/sysRadioField/SysRadioField";
-
+import { SysDatePicker } from "../../sysComponents/sysForm/sysDatePicker/SysDatePicker";
+import SysAppContext from "../../../app/AppContext";
+import DeleteDialog from "../../sysComponents/showDialog/custom/deleteDialog/DeleteDialog";
+import ConfirmDialog from "../../sysComponents/showDialog/custom/confirmDialog/ConfirmDialog";
 type Form = {
   toggleInput: boolean;
   textInput: string;
   radioInput: string;
+  dateInput: Date | null;
 };
 
 export const Example = () => {
+  const { showNotification, showDialog, closeDialog } =
+    useContext(SysAppContext);
+
   const [valueForm, setValueForm] = useState<Form>({
     toggleInput: false,
     textInput: "",
     radioInput: "",
+    dateInput: null,
   });
-
-  console.log("FORMULÁRIO = ", valueForm);
 
   const handleChange = (event: any) => {
     setValueForm({
@@ -40,6 +46,13 @@ export const Example = () => {
     setValueForm({
       ...valueForm,
       [event.target.name]: event.target.checked,
+    });
+  };
+
+  const handleDateChange = (date: Date | null) => {
+    setValueForm({
+      ...valueForm,
+      dateInput: date,
     });
   };
 
@@ -91,6 +104,8 @@ export const Example = () => {
     },
   ];
 
+  console.log(valueForm);
+
   return (
     <Box
       sx={{
@@ -132,6 +147,12 @@ export const Example = () => {
             onClick={(
               event: React.MouseEvent<HTMLButtonElement, MouseEvent>
             ) => {
+              showNotification({
+                open: true,
+                duration: 6000,
+                type: "default",
+                message: "Teste número 1",
+              });
               console.log("Clicou no primary button!", event);
             }}
           />
@@ -153,6 +174,12 @@ export const Example = () => {
             onClick={(
               event: React.MouseEvent<HTMLButtonElement, MouseEvent>
             ) => {
+              showNotification({
+                open: true,
+                duration: 6000,
+                type: "error",
+                message: "Teste número 2",
+              });
               console.log("Clicou no secondary button!", event);
             }}
           />
@@ -165,6 +192,43 @@ export const Example = () => {
             ) => {
               console.log("Clicou no secondary button desabilitado!", event);
             }}
+          />
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <SysButton
+            onClick={() => {
+              DeleteDialog({
+                showDialog,
+                closeDialog,
+                title: "Tem certeza que deseja excluir?",
+                message: "Esta ação não poderá ser desfeita.",
+                onDeleteConfirm: () => {
+                  showNotification({
+                    message: "Excluído com sucesso!",
+                  });
+                },
+              });
+            }}
+            mode={"primary"}
+            label={"Exibir diálogo de exclusão"}
+          />
+          <SysButton
+            onClick={() => {
+              ConfirmDialog({
+                showDialog,
+                closeDialog,
+                title: "Confirmar cadastro",
+                message:
+                  "Tem certeza que deseja confirmar o cadastro dos dados preenchidos?",
+                onConfirm: () => {
+                  showNotification({
+                    message: "Dados salvos!",
+                  });
+                },
+              });
+            }}
+            label={"Exibir diálogo de confirmação"}
+            mode={"primary"}
           />
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -286,6 +350,46 @@ export const Example = () => {
             options={optionsToRadioField}
             changeValue={handleChange}
             maxWidth="420px"
+            disabled
+          />
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "30px",
+          flexWrap: "wrap",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            width: "300px",
+          }}
+        >
+          <SysDatePicker
+            label="Data de nascimento"
+            value={valueForm.dateInput}
+            changeValue={handleDateChange}
+            maxWidth="300px"
+            placeholder="Selecione uma data"
+          />
+          <SysDatePicker
+            label="Data com erro"
+            value={valueForm.dateInput}
+            changeValue={handleDateChange}
+            maxWidth="300px"
+            error
+            msgError="É necessário selecionar uma data válida"
+          />
+          <SysDatePicker
+            label="Data desabilitada"
+            value={valueForm.dateInput}
+            changeValue={handleDateChange}
+            maxWidth="300px"
             disabled
           />
         </Box>

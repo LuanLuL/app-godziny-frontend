@@ -1,5 +1,5 @@
-import React, { ElementType } from "react";
-import styled from "@mui/material/styles/styled";
+import { ElementType } from "react";
+import { styled } from "@mui/material/styles";
 import sysSizing from "../../../sysMaterialUi/sizing/sysSizes";
 import Typography, { TypographyProps } from "@mui/material/Typography";
 

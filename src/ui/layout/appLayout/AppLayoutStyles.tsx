@@ -1,6 +1,7 @@
 import { ElementType } from "react";
 import Box, { BoxProps } from "@mui/material/Box";
-import styled from "@mui/material/styles/styled";
+import { styled } from "@mui/material/styles";
+import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
 
 interface IStyles {
   AppScreen: ElementType<BoxProps>;
@@ -10,23 +11,25 @@ interface IStyles {
 }
 
 const AppLayoutStyles: IStyles = {
-  AppScreen: styled(Box)(({ theme }) => ({
+  AppScreen: styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
+    height: "100%",
     position: "relative",
   })),
-  AppBody: styled(Box)(({ theme }) => ({
+  AppBody: styled(Box)(() => ({
     display: "flex",
     width: "100%",
-    height: "100%",
+    height: `calc(100% - ${sysSizing.contentPb})`,
   })),
-  AppContainerRouterSwitch: styled(Box)(({ theme }) => ({
+  AppContainerRouterSwitch: styled(Box)(() => ({
     width: "100%",
+    height: "100%",
     position: "relative",
     overflow: "scroll",
   })),
-  AppContainerSideBar: styled(Box)(({ theme }) => ({
+  AppContainerSideBar: styled(Box)(() => ({
     height: "100%",
     position: "relative",
   })),

@@ -1,5 +1,10 @@
-import React from "react";
-import { IconButton, Snackbar, Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import {
+  IconButton,
+  Snackbar,
+  SnackbarCloseReason,
+  Typography,
+} from "@mui/material";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
@@ -10,10 +15,11 @@ import {
   ShowNotificationBody,
   ShowNotificationStyles,
 } from "./ShowNotificationStyles";
-import { MyTooltip } from "../myTooltip/MyTooltip";
-import { SysAppLayoutContext } from "../../../app/AppLayout";
+import { MyTooltip } from "../../../../sysComponents/myTooltip/MyTooltip";
+import SysAppContext from "../../../../../app/AppContext";
 
 export interface IShowNotificationProps {
+  position?: number;
   open?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
@@ -23,25 +29,47 @@ export interface IShowNotificationProps {
 }
 
 export const ShowNotification: React.FC<IShowNotificationProps> = ({
+  position = 0,
   open = false,
   onOpen,
   onClose,
-  duration = 4000,
+  duration = 6000,
   type = "default",
   message,
 }) => {
-  const { isMobile } = React.useContext(SysAppLayoutContext);
+  const { isMobile } = React.useContext(SysAppContext);
+
+  useEffect(() => {
+    if (open && onOpen) {
+      onOpen();
+    }
+  }, [open, onOpen]);
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    onClose && onClose();
+  };
+
   if (!open) return null;
 
   return (
     <MyTooltip disableFocusListener title={message} customWidth={360} arrow>
       <Snackbar
         open={open}
-        onClose={onClose}
+        onClose={handleClose}
         autoHideDuration={duration}
+        disableWindowBlurListener={true}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "left",
+        }}
+        sx={{
+          "&.MuiSnackbar-root": { bottom: `${88 * position}px` },
         }}
       >
         <ShowNotificationContainer type={type}>

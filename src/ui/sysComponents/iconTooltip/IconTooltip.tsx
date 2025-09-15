@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Tooltip, TooltipProps } from "@mui/material";
-import { QuestionIcon, InformationIcon } from "./IconTooltipStyles";
+import Styles from "./IconTooltipStyles";
 
 interface IIconTooltipProps extends TooltipProps {
   type: "info" | "help";
@@ -13,7 +13,7 @@ export const IconTooltip: React.FC<IIconTooltipProps> = ({
   return (
     <Tooltip {...props}>
       <Box component="span">
-        {type === "info" ? <InformationIcon /> : <QuestionIcon />}
+        {type === "info" ? <Styles.InformationIcon /> : <Styles.QuestionIcon />}
       </Box>
     </Tooltip>
   );

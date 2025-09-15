@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Box, IconButton, Drawer } from "@mui/material";
 import Styles, { appHeaderStyles } from "./AppHeaderStyles";
-import logo from "../../../assets/imgs/logoGodzinyApp.png";
-import avatar from "../../../assets/imgs/avatar.png";
-import { SysAppLayoutContext } from "../../../app/AppLayout";
+import SysAppContext from "../../../app/AppContext";
 import { DrawerHeader } from "./components//DrawerAppBar/DrawerAppBar";
 import BasicTabs from "./components/BasicTabs/BasicTabs";
 
 export const AppHeader: React.FC = () => {
-  const { isMobile } = useContext(SysAppLayoutContext);
+  const { isMobile } = useContext(SysAppContext);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => () => {
@@ -26,12 +24,7 @@ export const AppHeader: React.FC = () => {
               </IconButton>
             </Styles.ContainerMenuIconHeader>
           )}
-          <Box
-            component="img"
-            src={logo}
-            alt="logoApp"
-            sx={appHeaderStyles.imgLogo(isMobile)}
-          />
+          <Box component="p">LOGO</Box>
         </Styles.HeaderTitle>
         <Styles.HeaderRoutes>
           {!isMobile && <BasicTabs />}
@@ -41,7 +34,7 @@ export const AppHeader: React.FC = () => {
             </IconButton>
             <Box
               component="img"
-              src={avatar}
+              src="/assets/imgs/avatar.png"
               alt="avatarApp"
               sx={appHeaderStyles.imgAvatar(isMobile)}
             />

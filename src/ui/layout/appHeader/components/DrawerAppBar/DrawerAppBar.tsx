@@ -6,9 +6,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { sysAppBarOptions } from "../../../appModuleManeger/AppModuleManeger";
-import Styles, { drawerAppBarStyles } from "./DrawerAppBarStyles";
+import Styles from "./DrawerAppBarStyles";
 import CloseIcon from "@mui/icons-material/Close";
-import logo from "../../../../../assets/imgs/logoGodzinyApp.png";
 import { useNavigate } from "react-router-dom";
 
 interface IDrawerHeaderProps {
@@ -79,12 +78,7 @@ export const DrawerHeader: React.FC<IDrawerHeaderProps> = ({ control }) => {
             />
           </IconButton>
         </Styles.ContainerMenuIconDrawerAppBar>
-        <Box
-          component="img"
-          src={logo}
-          alt="logoApp"
-          sx={drawerAppBarStyles.imgLogo}
-        />
+        <Box component="p">LOGO</Box>
       </Styles.DrawerAppBarTitle>
       {DrawerListAdminUser}
       <Styles.DividerDrawerAppBar />

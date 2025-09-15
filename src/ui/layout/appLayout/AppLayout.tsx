@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import ScrollToTop from "../../sysComponents/scrollToTop/ScrollToTop";
 import { AppHeader } from "../appHeader/AppHeader";
-import Styles from "./AppLayoutRefatoradoStyles";
-import { SysAppLayoutContext } from "../../../app/AppLayout";
+import Styles from "./AppLayoutStyles";
+import SysAppContext from "../../../app/AppContext";
 import { AppRouterSwitch } from "../../../app/AppRouterSwitch";
 import { AppSidebar } from "../appSideBar/AppSideBar";
 
-export const AppLayoutRefatorado = React.memo(() => {
-  const { isMobile } = useContext(SysAppLayoutContext);
+export const AppLayout = React.memo(() => {
+  const { isMobile } = useContext(SysAppContext);
   return (
     <Router>
       <ScrollToTop />

@@ -1,9 +1,7 @@
 import * as React from "react";
-import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { BasicMenuStyles } from "./BasicMenuStyles";
+import Styles from "./BasicMenuStyles";
 import Typography from "@mui/material/Typography";
 
 export type IoptionsToBasicMenu = {
@@ -33,17 +31,16 @@ export const BasicMenu: React.FC<IBasicMenuProps> = ({
 
   return (
     <>
-      <IconButton
+      <Styles.IconButtonBody
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={BasicMenuStyles.iconButton}
       >
         <MoreVertIcon />
-      </IconButton>
-      <Menu
+      </Styles.IconButtonBody>
+      <Styles.MenuBody
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -51,7 +48,6 @@ export const BasicMenu: React.FC<IBasicMenuProps> = ({
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
-        sx={BasicMenuStyles.menu}
       >
         {options.map((item, index) => (
           <MenuItem
@@ -64,7 +60,7 @@ export const BasicMenu: React.FC<IBasicMenuProps> = ({
             <Typography variant="body2">{item.label}</Typography>
           </MenuItem>
         ))}
-      </Menu>
+      </Styles.MenuBody>
     </>
   );
 };

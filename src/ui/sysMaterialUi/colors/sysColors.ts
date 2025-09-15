@@ -39,6 +39,7 @@ const sysBaseColors = {
   black: "#000000de",
   white: "#ffffff",
   hoverForWhite: "#e2e2e2",
+  disabledBackground: "#e7e7e7",
 };
 
 const sysPalette: PaletteOptions = {
@@ -80,6 +81,9 @@ const sysPalette: PaletteOptions = {
   background: {
     paper: sysBaseColors.hoverForWhite,
     default: sysBaseColors.white,
+  },
+  action: {
+    disabledBackground: sysBaseColors.disabledBackground,
   },
   divider: grayScale.separator,
 };

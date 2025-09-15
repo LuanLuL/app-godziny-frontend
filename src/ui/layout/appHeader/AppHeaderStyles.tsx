@@ -1,7 +1,7 @@
 import { ElementType } from "react";
 import { SxProps, Theme } from "@mui/material";
 import Box, { BoxProps } from "@mui/material/Box";
-import styled from "@mui/material/styles/styled";
+import { styled } from "@mui/material/styles";
 import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";

@@ -1,6 +1,4 @@
 import FolderZipIcon from "@mui/icons-material/FolderZip";
-import EventNoteIcon from "@mui/icons-material/EventNote";
-import SchoolIcon from "@mui/icons-material/School";
 import BadgeIcon from "@mui/icons-material/Badge";
 import { SvgIconProps } from "@mui/material/SvgIcon/SvgIcon";
 
@@ -29,22 +27,6 @@ export const sysAppBarOptions: IAppHeaderButton[] = [
     label: "Exemplo",
     path: "/example",
     icon: <FolderZipIcon sx={{ width: 23, height: 23 }} />,
-    active: true,
-    isProtected: false,
-    action: () => {},
-  },
-  {
-    label: "Atividades",
-    path: "/atividades",
-    icon: <EventNoteIcon sx={{ width: 23, height: 23 }} />,
-    active: true,
-    isProtected: false,
-    action: () => {},
-  },
-  {
-    label: "Cursos",
-    path: "/cursos",
-    icon: <SchoolIcon sx={{ width: 23, height: 23 }} />,
     active: true,
     isProtected: false,
     action: () => {},

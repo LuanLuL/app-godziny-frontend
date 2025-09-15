@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
-import { Box, TextFieldProps, Typography } from "@mui/material";
-import { MyTextField, SysTextFieldStyles } from "./SysTextFieldStyles";
+import { TextFieldProps, Typography } from "@mui/material";
+import Styles from "./SysTextFieldStyles";
 import { SysSimpleLabel } from "../sysSimpleLabel/SysSimpleLabel";
 
 type ISysTextField = {
@@ -33,19 +33,19 @@ export const SysTextField: React.FC<ISysTextField> = ({
 
   const showNumberCaractersComponent = () => {
     return (
-      <Box sx={SysTextFieldStyles.showNumberCaractersText}>
+      <Styles.ShowNumberCaractersBody>
         <Typography variant="caption">{`${value.length}/${maxLength}`}</Typography>
-      </Box>
+      </Styles.ShowNumberCaractersBody>
     );
   };
 
   return (
-    <Box sx={SysTextFieldStyles.container}>
+    <Styles.Container>
       <SysSimpleLabel
         label={label ?? "Digite um texto"}
         disabled={props.disabled ?? false}
       />
-      <MyTextField
+      <Styles.MyTextField
         value={value}
         onChange={onChange}
         placeholder={placeholder}
@@ -57,18 +57,14 @@ export const SysTextField: React.FC<ISysTextField> = ({
         inputProps={{ maxLength: showNumberCaracters ? maxLength : undefined }}
         {...props}
       />
-      <Box sx={[SysTextFieldStyles.errorMessageBody, { maxWidth: maxWidth }]}>
+      <Styles.ErrorMessageBody sx={{ maxWidth: maxWidth }}>
         {error && (
-          <Typography
-            variant="caption"
-            color="error"
-            sx={SysTextFieldStyles.errorMessageText}
-          >
+          <Styles.ErrorMessageText variant="caption" color="error">
             {msgError}
-          </Typography>
+          </Styles.ErrorMessageText>
         )}
         {showNumberCaracters && showNumberCaractersComponent()}
-      </Box>
-    </Box>
+      </Styles.ErrorMessageBody>
+    </Styles.Container>
   );
 };

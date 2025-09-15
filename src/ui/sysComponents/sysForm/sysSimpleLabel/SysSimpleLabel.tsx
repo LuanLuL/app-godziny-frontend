@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import Styles from "./sysSimpleLabelStyles";
 
 interface ISysSimpleLabel {

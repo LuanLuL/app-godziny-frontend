@@ -3,16 +3,6 @@ import sysSizing from "../../../../sysMaterialUi/sizing/sysSizes";
 import sysPalette from "../../../../sysMaterialUi/colors/sysColors";
 import { ElementType } from "react";
 
-export const drawerAppBarStyles = {
-  imgLogo: {
-    width: "100%",
-    height: "auto",
-    objectFit: "contain",
-    marginLeft: "0px",
-    maxWidth: "130px",
-  },
-};
-
 interface IStyles {
   DrawerAppBarTitle: ElementType<BoxProps>;
   DrawerAppBarBody: ElementType<BoxProps>;

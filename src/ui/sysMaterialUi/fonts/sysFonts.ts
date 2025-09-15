@@ -1,4 +1,4 @@
-import { TypographyOptions } from "@mui/material/styles/createTypography";
+import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 
 class SysFonts {
   public static readonly fontFamily = "Rawline, sans-serif";
@@ -160,7 +160,7 @@ class SysFonts {
 
   public static readonly getTypography = (
     _fontScale: number = 1
-  ): TypographyOptions => ({
+  ): TypographyStyleOptions => ({
     fontFamily: SysFonts.fontFamily,
     h1: SysFonts.h1(_fontScale),
     h2: SysFonts.h2(_fontScale),
