@@ -17,6 +17,7 @@ type ISysDatePicker = {
   msgError?: string;
   format?: string;
   disabled?: boolean;
+  clearable?: boolean;
   changeValue: (date: Date | null) => void;
 };
 
@@ -29,6 +30,7 @@ export const SysDatePicker: React.FC<ISysDatePicker> = ({
   msgError = "Algo deu errado, por favor, tente novamente.",
   format = "dd/MM/yyyy",
   disabled = false,
+  clearable = true,
   changeValue,
 }) => {
   const handleChange = (date: Date | null) => {
@@ -52,7 +54,7 @@ export const SysDatePicker: React.FC<ISysDatePicker> = ({
               error,
               InputProps: { sx: datePickerInputPropsSx },
             },
-            field: { clearable: true },
+            field: { clearable: clearable },
             popper: { sx: datePickerPopperSx },
           }}
           disabled={disabled}

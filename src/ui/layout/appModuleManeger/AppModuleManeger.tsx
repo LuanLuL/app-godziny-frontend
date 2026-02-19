@@ -1,5 +1,4 @@
 import FolderZipIcon from "@mui/icons-material/FolderZip";
-import BadgeIcon from "@mui/icons-material/Badge";
 import { SvgIconProps } from "@mui/material/SvgIcon/SvgIcon";
 
 export interface IAppHeaderButton {
@@ -27,14 +26,6 @@ export const sysAppBarOptions: IAppHeaderButton[] = [
     label: "Exemplo",
     path: "/example",
     icon: <FolderZipIcon sx={{ width: 23, height: 23 }} />,
-    active: true,
-    isProtected: false,
-    action: () => {},
-  },
-  {
-    label: "Usuários",
-    path: "/usuarios",
-    icon: <BadgeIcon sx={{ width: 23, height: 23 }} />,
     active: true,
     isProtected: false,
     action: () => {},

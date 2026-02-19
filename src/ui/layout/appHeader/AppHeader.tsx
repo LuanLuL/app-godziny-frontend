@@ -24,7 +24,12 @@ export const AppHeader: React.FC = () => {
               </IconButton>
             </Styles.ContainerMenuIconHeader>
           )}
-          <Box component="p">LOGO</Box>
+          <Box
+            component="img"
+            src={"/assets/imgs/logoGodzinyApp.png"}
+            alt="logoApp"
+            sx={appHeaderStyles.imgLogo(isMobile)}
+          />
         </Styles.HeaderTitle>
         <Styles.HeaderRoutes>
           {!isMobile && <BasicTabs />}
@@ -34,7 +39,7 @@ export const AppHeader: React.FC = () => {
             </IconButton>
             <Box
               component="img"
-              src="/assets/imgs/avatar.png"
+              src={"/assets/imgs/avatar.png"}
               alt="avatarApp"
               sx={appHeaderStyles.imgAvatar(isMobile)}
             />

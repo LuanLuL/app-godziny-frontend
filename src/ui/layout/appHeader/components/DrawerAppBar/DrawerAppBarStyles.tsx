@@ -1,4 +1,12 @@
-import { Box, BoxProps, Divider, DividerProps, styled } from "@mui/material";
+import {
+  Box,
+  BoxProps,
+  Divider,
+  DividerProps,
+  styled,
+  SxProps,
+  Theme,
+} from "@mui/material";
 import sysSizing from "../../../../sysMaterialUi/sizing/sysSizes";
 import sysPalette from "../../../../sysMaterialUi/colors/sysColors";
 import { ElementType } from "react";
@@ -40,4 +48,15 @@ const sysDrawerAppBarStyles: IStyles = {
   })),
 };
 
+const sysDrawerAppBarImgStyles = {
+  imgLogo: (): SxProps<Theme> => ({
+    width: "100%",
+    height: "auto",
+    objectFit: "contain",
+    maxWidth: "130px",
+  }),
+};
+
 export default sysDrawerAppBarStyles;
+
+export { sysDrawerAppBarImgStyles };

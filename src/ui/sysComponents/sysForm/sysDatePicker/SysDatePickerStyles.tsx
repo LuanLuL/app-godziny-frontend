@@ -78,6 +78,9 @@ const datePickerInputPropsSx = (theme: Theme) => ({
   "&.Mui-disabled .MuiSvgIcon-root": {
     color: theme.palette.text.disabled,
   },
+  "& .MuiSvgIcon-root": {
+    fontSize: "22px",
+  },
 });
 
 const datePickerPopperSx = (theme: Theme) => ({

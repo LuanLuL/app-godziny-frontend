@@ -7,7 +7,6 @@ interface IStyles {
   AppScreen: ElementType<BoxProps>;
   AppBody: ElementType<BoxProps>;
   AppContainerRouterSwitch: ElementType<BoxProps>;
-  AppContainerSideBar: ElementType<BoxProps>;
 }
 
 const AppLayoutStyles: IStyles = {
@@ -28,10 +27,6 @@ const AppLayoutStyles: IStyles = {
     height: "100%",
     position: "relative",
     overflow: "scroll",
-  })),
-  AppContainerSideBar: styled(Box)(() => ({
-    height: "100%",
-    position: "relative",
   })),
 };
 
