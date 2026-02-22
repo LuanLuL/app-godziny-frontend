@@ -53,7 +53,6 @@ const AppSideBarList: React.FC<ISideAppBarListProps> = ({
 
   const isSelected = useCallback(
     (path: string): boolean => {
-      console.log(path, location.pathname);
       return (
         location.pathname === path || location.pathname.startsWith(`${path}/`)
       );
