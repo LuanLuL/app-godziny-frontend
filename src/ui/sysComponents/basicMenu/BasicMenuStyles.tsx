@@ -1,5 +1,5 @@
 import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
-import sysPalette from "../../sysMaterialUi/colors/sysColors";
+import sysPalette from "../../sysMaterialUi/color/sysColors";
 import { ElementType } from "react";
 import {
   IconButton,
@@ -16,8 +16,8 @@ interface IStyles {
 
 const BasicMenuStyles: IStyles = {
   IconButtonBody: styled(IconButton)(() => ({
-    width: sysSizing.spacingFixedLg,
-    height: sysSizing.spacingFixedLg,
+    width: sysSizing.spacingFixedXl,
+    height: sysSizing.spacingFixedXl,
   })),
   MenuBody: styled(Menu)(() => ({
     ".MuiMenu-list": {

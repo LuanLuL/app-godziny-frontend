@@ -47,7 +47,7 @@ export const ShowNotification: React.FC<IShowNotificationProps> = ({
 
   const handleClose = (
     event: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason
+    reason?: SnackbarCloseReason,
   ) => {
     if (reason === "clickaway") {
       return;
@@ -58,7 +58,7 @@ export const ShowNotification: React.FC<IShowNotificationProps> = ({
   if (!open) return null;
 
   return (
-    <MyTooltip disableFocusListener title={message} customWidth={360} arrow>
+    <MyTooltip disableFocusListener title={message} customWidth={"360px"} arrow>
       <Snackbar
         open={open}
         onClose={handleClose}

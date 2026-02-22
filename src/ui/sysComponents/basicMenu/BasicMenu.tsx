@@ -3,6 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Styles from "./BasicMenuStyles";
 import Typography from "@mui/material/Typography";
+import SysIcon from "../sysIcon/SysIcons";
 
 export type IoptionsToBasicMenu = {
   label: string;
@@ -38,7 +39,10 @@ export const BasicMenu: React.FC<IBasicMenuProps> = ({
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <SysIcon
+          name="moreVert"
+          sx={{ color: (t) => t.palette.common.black }}
+        />
       </Styles.IconButtonBody>
       <Styles.MenuBody
         id="basic-menu"

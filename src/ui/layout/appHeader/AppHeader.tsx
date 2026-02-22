@@ -1,28 +1,46 @@
-import React, { useContext, useState } from "react";
-import { Box, IconButton, Drawer } from "@mui/material";
+import React, { useContext } from "react";
+import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
 import Styles, { appHeaderStyles } from "./AppHeaderStyles";
 import SysAppContext from "../../../app/AppContext";
-import { DrawerHeader } from "./components//DrawerAppBar/DrawerAppBar";
-import BasicTabs from "./components/BasicTabs/BasicTabs";
+import BasicTabs from "./components/basicTabs/BasicTabs";
+import SysIcon from "../../sysComponents/sysIcon/SysIcons";
+import { sysShadows } from "../../sysMaterialUi/shadow/sysShadows";
+import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
 
-export const AppHeader: React.FC = () => {
+interface IAppHeaderProps {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const AppHeader: React.FC<IAppHeaderProps> = ({ open, setOpen }) => {
   const { isMobile } = useContext(SysAppContext);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const toggleDrawer = (open: boolean) => () => {
-    setDrawerOpen(open);
-  };
 
   return (
-    <>
-      <Styles.HeaderBody>
+    <AppBar
+      position="sticky"
+      sx={{
+        top: 0,
+        zIndex: (t) => t.zIndex.drawer + 3,
+        height: sysSizing.contentPb,
+        justifyContent: "center",
+        bgcolor: (t) => t.palette.common.white,
+        boxShadow: sysShadows.shadow2,
+        pl: isMobile ? 1 : 4,
+        pr: 4,
+      }}
+    >
+      <Toolbar disableGutters>
         <Styles.HeaderTitle>
           {isMobile && (
-            <Styles.ContainerMenuIconHeader>
-              <IconButton onClick={toggleDrawer(true)}>
-                <Styles.MenuIconHeader />
-              </IconButton>
-            </Styles.ContainerMenuIconHeader>
+            <IconButton
+              onClick={() => setOpen((previw) => !previw)}
+              sx={{ padding: "8px 8px 8px 8px" }}
+            >
+              <SysIcon
+                name={open ? "close" : "menu"}
+                sx={{ color: (t) => t.palette.common.black }}
+              />
+            </IconButton>
           )}
           <Box
             component="img"
@@ -35,7 +53,10 @@ export const AppHeader: React.FC = () => {
           {!isMobile && <BasicTabs />}
           <Styles.HeaderOptions>
             <IconButton action={() => {}}>
-              <Styles.NotificationsIcon />
+              <SysIcon
+                name="notifications"
+                sx={{ color: (t) => t.palette.common.black }}
+              />
             </IconButton>
             <Box
               component="img"
@@ -45,14 +66,7 @@ export const AppHeader: React.FC = () => {
             />
           </Styles.HeaderOptions>
         </Styles.HeaderRoutes>
-      </Styles.HeaderBody>
-      <Drawer
-        anchor="left"
-        open={isMobile ? drawerOpen : false}
-        onClose={toggleDrawer(false)}
-      >
-        <DrawerHeader control={toggleDrawer} />
-      </Drawer>
-    </>
+      </Toolbar>
+    </AppBar>
   );
 };

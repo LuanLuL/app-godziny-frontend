@@ -3,7 +3,7 @@ import { TooltipProps } from "@mui/material";
 import { CustomWidthTooltip } from "./MyTooltipStyles";
 
 interface IMyTooltipProps extends TooltipProps {
-  customWidth: number;
+  customWidth: string;
 }
 
 export const MyTooltip: React.FC<IMyTooltipProps> = ({

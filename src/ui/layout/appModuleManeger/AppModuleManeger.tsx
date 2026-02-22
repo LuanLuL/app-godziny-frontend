@@ -1,38 +1,37 @@
 import FolderZipIcon from "@mui/icons-material/FolderZip";
-import { SvgIconProps } from "@mui/material/SvgIcon/SvgIcon";
+import { SymbolsIconsNames } from "../../sysComponents/sysIcon/SymbolsNames";
+import { ReactNode } from "react";
+import { Example } from "../../sysPages/example/Example";
 
-export interface IAppHeaderButton {
-  label: string;
+export interface ItemAppBar {
   path: string;
-  active: boolean;
-  isProtected: boolean;
-  icon: React.ReactElement<SvgIconProps>;
-  action: () => void;
-  resources?: any[];
+  name: string;
+  icon: SymbolsIconsNames;
+  component: ReactNode;
 }
 
-export interface IAppSideBarButton {
-  label: string;
-  path: string;
-  active: boolean;
-  isProtected: boolean;
-  icon: React.ReactElement<SvgIconProps>;
-  action: () => void;
-  resources?: any[];
-}
-
-export const sysAppBarOptions: IAppHeaderButton[] = [
+export const headerItems: ItemAppBar[] = [
   {
-    label: "Exemplo",
-    path: "/example",
-    icon: <FolderZipIcon sx={{ width: 23, height: 23 }} />,
-    active: true,
-    isProtected: false,
-    action: () => {},
+    path: "/",
+    name: "início",
+    icon: "home",
+    component: <Example />,
+  },
+  {
+    path: "/exemplo",
+    name: "Exemplo",
+    icon: "assignmentLate",
+    component: <Example />,
+  },
+  {
+    path: "/pesquisa-geral",
+    name: "Pesquisa Geral",
+    icon: "search",
+    component: <Example />,
   },
 ];
 
 export const getValueAppHeader = (path: string): number => {
   const suffix = path.split("/")[1];
-  return sysAppBarOptions.findIndex((route) => route.path.includes(suffix));
+  return headerItems.findIndex((route) => route.path.includes(suffix));
 };

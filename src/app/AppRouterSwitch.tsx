@@ -1,11 +1,16 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Example } from "../ui/sysPages/example/Example";
+import {
+  headerItems,
+  ItemAppBar,
+} from "../ui/layout/appModuleManeger/AppModuleManeger";
 
 export const AppRouterSwitch = () => {
   return (
     <Routes>
-      <Route path="/example" element={<Example />} />
-      <Route path="*" element={<Navigate to="/example" />} />
+      {headerItems.map((route: ItemAppBar) => (
+        <Route key={route.path} path={route.path} element={route.component} />
+      ))}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };

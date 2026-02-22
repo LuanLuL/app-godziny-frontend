@@ -1,16 +1,16 @@
 import React from "react";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
-import symbolsNames, { SymbolsNames } from "./SymbolsNames";
+import symbolsIconsNames, { SymbolsIconsNames } from "./SymbolsNames";
 
 export interface ISysIconProps extends SvgIconProps {
-  name: SymbolsNames;
+  name: SymbolsIconsNames;
   viewBoxProp?: string | undefined;
   transformProp?: string | undefined;
 }
 
 const SysIcon: React.FC<ISysIconProps> = ({
   name = "add",
-  viewBoxProp = "0 0 24 24",
+  viewBoxProp = "0 -960 960 960",
   transformProp = "translate(0, 0)",
   ...props
 }) => {
@@ -18,10 +18,10 @@ const SysIcon: React.FC<ISysIconProps> = ({
     <SvgIcon viewBox={viewBoxProp} {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
+        viewBox="0 -960 960 960"
         fill="currentColor"
       >
-        <path d={symbolsNames[name]} transform={transformProp} />
+        <path d={symbolsIconsNames[name]} transform={transformProp} />
       </svg>
     </SvgIcon>
   );

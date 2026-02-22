@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Box } from "@mui/material";
 import { IconTooltip } from "../../sysComponents/iconTooltip/IconTooltip";
-import TuneIcon from "@mui/icons-material/Tune";
 import {
   BasicMenu,
   IoptionsToBasicMenu,
@@ -17,6 +16,7 @@ import { SysDatePicker } from "../../sysComponents/sysForm/sysDatePicker/SysDate
 import SysAppContext from "../../../app/AppContext";
 import DeleteDialog from "../../sysComponents/showDialog/custom/deleteDialog/DeleteDialog";
 import ConfirmDialog from "../../sysComponents/showDialog/custom/confirmDialog/ConfirmDialog";
+import SysIcon from "../../sysComponents/sysIcon/SysIcons";
 type Form = {
   toggleInput: boolean;
   textInput: string;
@@ -145,7 +145,7 @@ export const Example = () => {
             mode="primary"
             label="Primary"
             onClick={(
-              event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+              event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
             ) => {
               showNotification({
                 open: true,
@@ -161,7 +161,7 @@ export const Example = () => {
             label="Primary disabled"
             disabled
             onClick={(
-              event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+              event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
             ) => {
               console.log("Clicou no primary button desabilitado!", event);
             }}
@@ -172,7 +172,7 @@ export const Example = () => {
             mode="secondary"
             label="Secondary"
             onClick={(
-              event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+              event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
             ) => {
               showNotification({
                 open: true,
@@ -188,7 +188,7 @@ export const Example = () => {
             label="Secondary disabled"
             disabled
             onClick={(
-              event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+              event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
             ) => {
               console.log("Clicou no secondary button desabilitado!", event);
             }}
@@ -235,9 +235,9 @@ export const Example = () => {
           <SysButton
             mode="secondary"
             label="Icon"
-            startIcon={<TuneIcon />}
+            startIcon={<SysIcon name="add" />}
             onClick={(
-              event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+              event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
             ) => {
               console.log("Clicou no secondary button com icon!", event);
             }}
@@ -246,7 +246,7 @@ export const Example = () => {
             mode="link"
             label=" http://link"
             onClick={(
-              event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+              event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
             ) => {
               console.log("Clicou no link button!", event);
             }}

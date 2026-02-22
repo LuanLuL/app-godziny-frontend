@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Tooltip, TooltipProps } from "@mui/material";
 import Styles from "./IconTooltipStyles";
+import SysIcon from "../sysIcon/SysIcons";
 
 interface IIconTooltipProps extends TooltipProps {
   type: "info" | "help";
@@ -13,7 +14,7 @@ export const IconTooltip: React.FC<IIconTooltipProps> = ({
   return (
     <Tooltip {...props}>
       <Box component="span">
-        {type === "info" ? <Styles.InformationIcon /> : <Styles.QuestionIcon />}
+        <SysIcon name={type} sx={{ color: (t) => t.palette.common.black }} />
       </Box>
     </Tooltip>
   );
