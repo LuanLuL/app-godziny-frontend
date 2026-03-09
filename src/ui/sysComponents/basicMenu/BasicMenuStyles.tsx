@@ -8,6 +8,7 @@ import {
   MenuProps,
   styled,
 } from "@mui/material";
+import { sysShadows } from "../../sysMaterialUi/shadow/sysShadows";
 
 interface IStyles {
   IconButtonBody: ElementType<IconButtonProps>;
@@ -20,6 +21,9 @@ const BasicMenuStyles: IStyles = {
     height: sysSizing.spacingFixedXl,
   })),
   MenuBody: styled(Menu)(() => ({
+    ".MuiPaper-root": {
+      boxShadow: sysShadows.shadowCardDefault,
+    },
     ".MuiMenu-list": {
       backgroundColor: `${sysPalette.common?.white}`,
     },

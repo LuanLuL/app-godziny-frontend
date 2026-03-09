@@ -13,3 +13,9 @@ export interface ISysGeneralComponentsCommon {
    */
   loading?: boolean;
 }
+
+/**
+ * Alias para o retorno de JSON.parse, genérico o suficiente para aceitar qualquer valor válido de JSON.
+ * Mantém clareza sem engessar em tipos específicos e herda futuras melhorias do TypeScript.
+ */
+export type ParcedJson = ReturnType<typeof JSON.parse>;

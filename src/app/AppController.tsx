@@ -7,8 +7,8 @@ import {
   AppNotificationStack,
   IAppNotification,
 } from "../ui/layout/appNotificationStack/AppNotificationStack";
-import { MAX_NOTIFICATIONS } from "../typings/ConfigEnvironment";
-import { ISysGeneralComponentsCommon } from "../typings/DefaultTypings";
+import { MAX_NOTIFICATIONS } from "../shared/typings/ConfigEnvironment";
+import { ISysGeneralComponentsCommon } from "../shared/typings/DefaultTypings";
 import {
   IShowDialogProps,
   ShowDialog,
@@ -55,13 +55,13 @@ export const UseAppController: React.FC = () => {
       reason?: "backdropClick" | "escapeKeyDown",
       callBack?: (
         event?: {},
-        reason?: "backdropClick" | "escapeKeyDown"
-      ) => void
+        reason?: "backdropClick" | "escapeKeyDown",
+      ) => void,
     ) => {
       setShowDialog(defaultState);
       callBack?.(event, reason);
     },
-    []
+    [],
   );
 
   const providerValue: IAppContext = {

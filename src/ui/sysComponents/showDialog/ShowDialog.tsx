@@ -13,11 +13,10 @@ import {
 } from "@mui/material";
 import Styles from "./ShowDialogStyles";
 import { DialogTransitions } from "./transitions";
-import { ISysGeneralComponentsCommon } from "../../../typings/DefaultTypings";
+import { ISysGeneralComponentsCommon } from "../../../shared/typings/DefaultTypings";
 
 export interface IShowDialogProps
-  extends ISysGeneralComponentsCommon,
-    Omit<DialogProps, "open"> {
+  extends ISysGeneralComponentsCommon, Omit<DialogProps, "open"> {
   open?: boolean;
   close?: (event: object, reason: "backdropClick" | "escapeKeyDown") => void;
   onOpen?: () => void;
@@ -84,7 +83,7 @@ export const ShowDialog: React.FC<IShowDialogProps> = ({
 
   const theme = useTheme();
   const isFullScreen = useMediaQuery(
-    theme.breakpoints.down(fullScreenMediaQuery ?? "xs")
+    theme.breakpoints.down(fullScreenMediaQuery ?? "xs"),
   );
   const hasChildren = !!children;
   return (

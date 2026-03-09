@@ -17,11 +17,16 @@ import SysAppContext from "../../../app/AppContext";
 import DeleteDialog from "../../sysComponents/showDialog/custom/deleteDialog/DeleteDialog";
 import ConfirmDialog from "../../sysComponents/showDialog/custom/confirmDialog/ConfirmDialog";
 import SysIcon from "../../sysComponents/sysIcon/SysIcons";
+import {
+  IOptionToSysSelectField,
+  SysSelectField,
+} from "../../sysComponents/sysForm/sysSelect/SysSelectField";
 type Form = {
   toggleInput: boolean;
   textInput: string;
   radioInput: string;
   dateInput: Date | null;
+  selectInput: string;
 };
 
 export const Example = () => {
@@ -33,6 +38,7 @@ export const Example = () => {
     textInput: "",
     radioInput: "",
     dateInput: null,
+    selectInput: "",
   });
 
   const handleChange = (event: any) => {
@@ -90,18 +96,19 @@ export const Example = () => {
   ];
 
   const optionsToRadioField: IOptionToSysRadioField[] = [
-    {
-      label: "Opção 1",
-      value: "option1",
-    },
-    {
-      label: "Opção 2",
-      value: "option2",
-    },
-    {
-      label: "Opção 3",
-      value: "option3",
-    },
+    { label: "Opção 1", value: "option1" },
+    { label: "Opção 2", value: "option2" },
+    { label: "Opção 3", value: "option3" },
+  ];
+
+  const optionsToSelectField: IOptionToSysSelectField[] = [
+    { label: "Opção 1", value: "option1" },
+    { label: "Opção 2", value: "option2" },
+    { label: "Opção 3", value: "option3" },
+    { label: "Opção 4", value: "option4" },
+    { label: "Opção 5", value: "option5" },
+    { label: "Opção 6", value: "option6" },
+    { label: "Opção 7", value: "option7" },
   ];
 
   console.log(valueForm);
@@ -389,6 +396,42 @@ export const Example = () => {
             label="Data desabilitada"
             value={valueForm.dateInput}
             changeValue={handleDateChange}
+            maxWidth="300px"
+            disabled
+          />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            width: "300px",
+          }}
+        >
+          <SysSelectField
+            label="Label SelectInput"
+            options={optionsToSelectField}
+            name="selectInput"
+            value={valueForm.selectInput}
+            changeValue={handleChange}
+            maxWidth="300px"
+          />
+          <SysSelectField
+            label="Label SelectInput erro"
+            options={optionsToSelectField}
+            name="selectInput"
+            value={valueForm.selectInput}
+            changeValue={handleChange}
+            maxWidth="300px"
+            error
+            msgError="É necessário selecionar uma opção válida"
+          />
+          <SysSelectField
+            label="Label SelectInput desabilitada"
+            options={optionsToSelectField}
+            name="selectInput"
+            value={valueForm.selectInput}
+            changeValue={handleChange}
             maxWidth="300px"
             disabled
           />

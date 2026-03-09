@@ -19,7 +19,7 @@ const grayScale = {
   normal: "#666666",
   separator: "#0000001a",
   textPrimary: "#17171c",
-  textSecondary: "#454554",
+  textSecondary: "#c4c4c4",
   disabled: "#a4a4b5",
 };
 
