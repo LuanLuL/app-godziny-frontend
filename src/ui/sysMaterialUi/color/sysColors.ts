@@ -4,7 +4,7 @@ const blueScale = {
   escuro: "#001f5C",
   claro: "#c9d4df",
   normal: "#003399",
-  fundo: "#bac3dd",
+  fundo: "#ccd6eb",
 };
 
 const greenScale = {

@@ -146,24 +146,8 @@ const SysSelectMultipleFieldStyles: IStyles = {
     font: "inherit",
   })),
   MyCheckBox: styled(Checkbox)(() => ({
-    position: "static",
-    top: "auto",
-    left: "auto",
-    transform: "none",
     padding: 0,
-    marginRight: 0,
-    marginLeft: 0,
     flexShrink: 0,
-    "&::before": {
-      display: "none",
-    },
-    "&.MuiButtonBase-root": {
-      top: "auto",
-      left: "auto",
-      transform: "none",
-      height: 20,
-      width: 20,
-    },
     "&:hover": {
       backgroundColor: "transparent",
     },
@@ -240,13 +224,16 @@ const MenuBoxPopperSx = (theme: Theme) => ({
     backgroundColor: alpha(theme.palette.common.black, 0.04),
   },
   "& .MuiMenuItem-root.Mui-selected:hover": {
-    backgroundColor: alpha(theme.palette.common.black, 0.04),
+    backgroundColor: theme.palette.primary.contrastText,
   },
   "& .MuiMenuItem-root.Mui-focusVisible": {
     backgroundColor: alpha(theme.palette.common.black, 0.04),
   },
   "& .MuiMenuItem-root:hover .MuiCheckbox-root": {
     color: theme.palette.primary.main,
+  },
+  "& .MuiMenuItem-root.Mui-selected.Mui-focusVisible": {
+    backgroundColor: theme.palette.primary.contrastText,
   },
 });
 

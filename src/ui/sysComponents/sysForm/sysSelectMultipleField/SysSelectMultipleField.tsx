@@ -272,6 +272,8 @@ export const SysSelectMultipleField: React.FC<ISysSelectMultipleField> = ({
           [
             <MenuItem key={`menu-item-${labelAll}`} value={SELECT_ALL_VALUE}>
               <Styles.MyCheckBox
+                disableRipple
+                disableTouchRipple
                 checkedIcon={<SysIcon name="checkBox" />}
                 icon={<SysIcon name="checkBoxOutilineBlank" />}
                 checked={allSelected}
@@ -283,6 +285,8 @@ export const SysSelectMultipleField: React.FC<ISysSelectMultipleField> = ({
             ...options.map((option) => (
               <MenuItem key={`menu-item-${option.value}`} value={option.value}>
                 <Styles.MyCheckBox
+                  disableRipple
+                  disableTouchRipple
                   checkedIcon={<SysIcon name="checkBox" />}
                   icon={<SysIcon name="checkBoxOutilineBlank" />}
                   checked={value.includes(option.value)}

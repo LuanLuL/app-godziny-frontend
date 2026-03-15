@@ -190,10 +190,13 @@ const MenuBoxPopperSx = (theme: Theme) => ({
     backgroundColor: alpha(theme.palette.common.black, 0.04),
   },
   "& .MuiMenuItem-root.Mui-selected:hover": {
-    backgroundColor: alpha(theme.palette.common.black, 0.04),
+    backgroundColor: theme.palette.primary.contrastText,
   },
   "& .MuiMenuItem-root.Mui-focusVisible": {
     backgroundColor: alpha(theme.palette.common.black, 0.04),
+  },
+  "& .MuiMenuItem-root.Mui-selected.Mui-focusVisible": {
+    backgroundColor: theme.palette.primary.contrastText,
   },
 });
 
