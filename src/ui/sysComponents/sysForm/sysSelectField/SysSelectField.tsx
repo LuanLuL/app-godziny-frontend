@@ -131,8 +131,6 @@ export const SysSelectField: React.FC<ISysSelectField> = ({
           },
         }}
         MenuProps={{
-          autoFocus: false,
-          disableAutoFocusItem: true,
           PaperProps: {
             sx: MenuBoxPopperSx,
           },

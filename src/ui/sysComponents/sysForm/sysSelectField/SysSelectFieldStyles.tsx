@@ -192,6 +192,9 @@ const MenuBoxPopperSx = (theme: Theme) => ({
   "& .MuiMenuItem-root.Mui-selected:hover": {
     backgroundColor: alpha(theme.palette.common.black, 0.04),
   },
+  "& .MuiMenuItem-root.Mui-focusVisible": {
+    backgroundColor: alpha(theme.palette.common.black, 0.04),
+  },
 });
 
 export default SysSelectFieldStyles;

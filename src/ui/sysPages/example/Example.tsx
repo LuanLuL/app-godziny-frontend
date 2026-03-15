@@ -20,13 +20,15 @@ import SysIcon from "../../sysComponents/sysIcon/SysIcons";
 import {
   IOptionToSysSelectField,
   SysSelectField,
-} from "../../sysComponents/sysForm/sysSelect/SysSelectField";
+} from "../../sysComponents/sysForm/sysSelectField/SysSelectField";
+import { SysSelectMultipleField } from "../../sysComponents/sysForm/sysSelectMultipleField/SysSelectMultipleField";
 type Form = {
   toggleInput: boolean;
   textInput: string;
   radioInput: string;
   dateInput: Date | null;
   selectInput: string;
+  selectMultipleInput: string[];
 };
 
 export const Example = () => {
@@ -39,6 +41,7 @@ export const Example = () => {
     radioInput: "",
     dateInput: null,
     selectInput: "",
+    selectMultipleInput: [],
   });
 
   const handleChange = (event: any) => {
@@ -431,6 +434,42 @@ export const Example = () => {
             options={optionsToSelectField}
             name="selectInput"
             value={valueForm.selectInput}
+            changeValue={handleChange}
+            maxWidth="300px"
+            disabled
+          />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            width: "300px",
+          }}
+        >
+          <SysSelectMultipleField
+            label="Label SelectMultipleInput"
+            options={optionsToSelectField}
+            name="selectMultipleInput"
+            value={valueForm.selectMultipleInput}
+            changeValue={handleChange}
+            maxWidth="300px"
+          />
+          <SysSelectMultipleField
+            label="Label SelectMultipleInput erro"
+            options={optionsToSelectField}
+            name="selectMultipleInput"
+            value={valueForm.selectMultipleInput}
+            changeValue={handleChange}
+            maxWidth="300px"
+            error
+            msgError="É necessário selecionar uma opção válida"
+          />
+          <SysSelectMultipleField
+            label="Label SelectMultipleInput desabilitada"
+            options={optionsToSelectField}
+            name="selectMultipleInput"
+            value={valueForm.selectMultipleInput}
             changeValue={handleChange}
             maxWidth="300px"
             disabled
