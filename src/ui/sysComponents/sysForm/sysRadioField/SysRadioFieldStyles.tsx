@@ -1,6 +1,8 @@
 import { ElementType } from "react";
 import RadioGroup, { RadioGroupProps } from "@mui/material/RadioGroup";
-import FormControlLabel, { FormControlLabelProps } from "@mui/material/FormControlLabel";
+import FormControlLabel, {
+  FormControlLabelProps,
+} from "@mui/material/FormControlLabel";
 import Radio, { RadioProps } from "@mui/material/Radio";
 import { styled } from "@mui/material/styles";
 import sysSizing from "../../../sysMaterialUi/sizing/sysSizes";
@@ -19,6 +21,9 @@ const SysRadioFieldStyles: IStyles = {
     gap: `${sysSizing.base.baseRem1} ${sysSizing.base.baseRem3}`,
   })),
   MyRadio: styled(Radio)(({ theme }) => ({
+    "&:hover .MuiSvgIcon-root": {
+      color: theme.palette.primary.main,
+    },
     "&.Mui-disabled .MuiSvgIcon-root": {
       color: theme.palette.info.light,
     },
