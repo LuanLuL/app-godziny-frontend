@@ -61,7 +61,7 @@ export const SysSelectField: React.FC<ISysSelectField> = ({
   ...props
 }) => {
   const onChange = (event: SelectChangeEvent<unknown>) => {
-    changeValue(event as SelectChangeEvent<string>);
+    changeValue(event as SelectChangeEvent<ParcedJson>);
   };
 
   const hasValueState = useMemo(() => {
@@ -72,7 +72,7 @@ export const SysSelectField: React.FC<ISysSelectField> = ({
   }, [value]);
 
   const renderValue = (selected: unknown) => {
-    const selectedValue = selected as string;
+    const selectedValue = selected;
 
     if (!hasValue(value)) {
       return (
@@ -160,7 +160,7 @@ export const SysSelectField: React.FC<ISysSelectField> = ({
                   e.stopPropagation();
                   onChange({
                     target: { value: "", name: props.name },
-                  } as SelectChangeEvent<string>);
+                  } as SelectChangeEvent<ParcedJson>);
                 }}
                 edge="end"
                 size="small"
