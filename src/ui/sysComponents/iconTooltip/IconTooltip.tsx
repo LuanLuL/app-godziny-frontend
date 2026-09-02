@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Tooltip, TooltipProps } from "@mui/material";
-import Styles from "./IconTooltipStyles";
 import SysIcon from "../sysIcon/SysIcons";
 
 interface IIconTooltipProps extends TooltipProps {

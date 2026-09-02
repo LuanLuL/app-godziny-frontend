@@ -1,4 +1,3 @@
-import FolderZipIcon from "@mui/icons-material/FolderZip";
 import { SymbolsIconsNames } from "../../sysComponents/sysIcon/SymbolsNames";
 import { ReactNode } from "react";
 import { Example } from "../../sysPages/example/Example";
