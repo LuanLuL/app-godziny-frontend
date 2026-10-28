@@ -24,8 +24,9 @@ const SysDatePickerStyles: IStyles = {
     alignItems: "flex-start",
     padding: sysSizing.base.baseFixed075,
   })),
-  MyDatePicker: styled(DatePicker)(() => ({
+  MyDatePicker: styled(DatePicker)(({ theme }) => ({
     width: "100%",
+    background: theme.palette.background.default,
   })),
   ErrorMessageBody: styled(Box)(() => ({
     marginTop: sysSizing.spacingFixedXs,

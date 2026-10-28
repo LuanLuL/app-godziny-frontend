@@ -31,6 +31,7 @@ const SysTextFieldStyles: IStyles = {
       borderRadius: sysSizing.radiusXs,
       maxHeight: "40px",
       border: "none",
+      backgroundColor: theme.palette.background.default,
     },
     "& .MuiOutlinedInput-root": {
       "&:hover fieldset": {

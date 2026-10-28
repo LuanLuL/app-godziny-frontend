@@ -22,6 +22,66 @@ import {
   SysSelectField,
 } from "../../sysComponents/sysForm/sysSelectField/SysSelectField";
 import { SysSelectMultipleField } from "../../sysComponents/sysForm/sysSelectMultipleField/SysSelectMultipleField";
+import { ComplexTable } from "../../sysComponents/complexTable/complexTable";
+
+interface IUser {
+  matricula: string | null;
+  cursoSigla: string;
+  nome: string;
+  email: string;
+  senha: string;
+  tipo: "NORMAL" | "ADMIN";
+  createdAt: string;
+}
+
+const users: IUser[] = [
+  {
+    matricula: null,
+    cursoSigla: "ENG_CIVIL_UEMG",
+    nome: "Gabriel",
+    email: "gabriel@uemg.com",
+    senha: "123456",
+    tipo: "NORMAL",
+    createdAt: "2024-08-19T11:27:05Z",
+  },
+  {
+    matricula: "202400123",
+    cursoSigla: "ENG_COMP_UEMG",
+    nome: "Ana Silva",
+    email: "ana.silva@uemg.com",
+    senha: "abc123",
+    tipo: "NORMAL",
+    createdAt: "2024-09-10T14:30:00Z",
+  },
+  {
+    matricula: "202400456",
+    cursoSigla: "MED_UEMG",
+    nome: "Lucas Oliveira",
+    email: "lucas.oliveira@uemg.com",
+    senha: "senha456",
+    tipo: "ADMIN",
+    createdAt: "2024-10-05T09:15:00Z",
+  },
+  {
+    matricula: "202400789",
+    cursoSigla: "ENG_CIVIL_UEMG",
+    nome: "Mariana Costa",
+    email: "mariana.costa@uemg.com",
+    senha: "teste789",
+    tipo: "NORMAL",
+    createdAt: "2024-11-21T16:45:00Z",
+  },
+  {
+    matricula: null,
+    cursoSigla: "DIR_UEMG",
+    nome: "Pedro Santos",
+    email: "pedro.santos@uemg.com",
+    senha: "pedro123",
+    tipo: "NORMAL",
+    createdAt: "2025-01-12T12:00:00Z",
+  },
+];
+
 type Form = {
   toggleInput: boolean;
   textInput: string;
@@ -123,6 +183,7 @@ export const Example = () => {
         display: "flex",
         flexDirection: "column",
         gap: "30px",
+        background: (theme) => theme.palette.background.paper,
       }}
     >
       <Box
@@ -475,6 +536,9 @@ export const Example = () => {
             disabled
           />
         </Box>
+      </Box>
+      <Box sx={{ width: "100%" }}>
+        <ComplexTable<IUser> data={users} />
       </Box>
     </Box>
   );

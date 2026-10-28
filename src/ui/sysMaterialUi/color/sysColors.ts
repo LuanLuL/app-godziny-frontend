@@ -38,7 +38,7 @@ const yellowScale = {
 const sysBaseColors = {
   black: "#000000de",
   white: "#ffffff",
-  hoverForWhite: "#e2e2e2",
+  hoverForWhite: "#f8f8f8",
   disabledBackground: "#e7e7e7",
 };
 

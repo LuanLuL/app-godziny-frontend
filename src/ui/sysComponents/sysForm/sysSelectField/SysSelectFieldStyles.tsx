@@ -44,6 +44,7 @@ const SysSelectFieldStyles: IStyles = {
     width: "100%",
     minWidth: 100,
     height: "40px",
+    background: theme.palette.background.default,
     "& .MuiSelect-select": {
       height: "40px",
       display: "flex",
