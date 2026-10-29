@@ -40,6 +40,10 @@ const sysBaseColors = {
   white: "#ffffff",
   hoverForWhite: "#f8f8f8",
   disabledBackground: "#e7e7e7",
+  gray20: "#cccccc",
+  gray30: "#adadad",
+  gray50: "#757575",
+  gray80: "#333333",
 };
 
 const sysPalette: PaletteOptions = {
@@ -81,6 +85,15 @@ const sysPalette: PaletteOptions = {
   background: {
     paper: sysBaseColors.hoverForWhite,
     default: sysBaseColors.white,
+  },
+  sysText: {
+    auxiliary: sysBaseColors.gray50,
+    auxiliary2: sysBaseColors.gray20,
+    base: sysBaseColors.white,
+    baseContrast: sysBaseColors.black,
+    body: sysBaseColors.gray80,
+    disabled: sysBaseColors.gray30,
+    title: sysBaseColors.black,
   },
   action: {
     disabledBackground: sysBaseColors.disabledBackground,

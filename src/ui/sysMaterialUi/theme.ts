@@ -4,6 +4,26 @@ import sysPalette from "./color/sysColors";
 
 const typography = sysFonts.getTypography() as any;
 
+declare module "@mui/material/styles" {
+  interface ISysText {
+    auxiliary?: string;
+    auxiliary2?: string;
+    base?: string;
+    baseContrast?: string;
+    body?: string;
+    disabled?: string;
+    title?: string;
+  }
+
+  interface Palette {
+    sysText: ISysText;
+  }
+
+  interface PaletteOptions {
+    sysText?: Partial<ISysText>;
+  }
+}
+
 export const MaterialUiTheme = createTheme({
   palette: {
     ...sysPalette,

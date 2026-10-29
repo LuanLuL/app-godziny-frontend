@@ -29,7 +29,6 @@ interface IUser {
   cursoSigla: string;
   nome: string;
   email: string;
-  senha: string;
   tipo: "NORMAL" | "ADMIN";
   createdAt: string;
 }
@@ -40,45 +39,40 @@ const users: IUser[] = [
     cursoSigla: "ENG_CIVIL_UEMG",
     nome: "Gabriel",
     email: "gabriel@uemg.com",
-    senha: "123456",
     tipo: "NORMAL",
-    createdAt: "2024-08-19T11:27:05Z",
+    createdAt: "19/08/2024",
   },
   {
     matricula: "202400123",
     cursoSigla: "ENG_COMP_UEMG",
     nome: "Ana Silva",
     email: "ana.silva@uemg.com",
-    senha: "abc123",
     tipo: "NORMAL",
-    createdAt: "2024-09-10T14:30:00Z",
+    createdAt: "10/09/2024",
   },
   {
     matricula: "202400456",
     cursoSigla: "MED_UEMG",
     nome: "Lucas Oliveira",
     email: "lucas.oliveira@uemg.com",
-    senha: "senha456",
     tipo: "ADMIN",
-    createdAt: "2024-10-05T09:15:00Z",
+    createdAt: "05/10/2024",
   },
   {
     matricula: "202400789",
     cursoSigla: "ENG_CIVIL_UEMG",
     nome: "Mariana Costa",
     email: "mariana.costa@uemg.com",
-    senha: "teste789",
     tipo: "NORMAL",
-    createdAt: "2024-11-21T16:45:00Z",
+    createdAt: "21/11/2024",
   },
   {
     matricula: null,
     cursoSigla: "DIR_UEMG",
     nome: "Pedro Santos",
     email: "pedro.santos@uemg.com",
-    senha: "pedro123",
     tipo: "NORMAL",
-    createdAt: "2025-01-12T12:00:00Z",
+    createdAt: "12/01/2025",
   },
 ];
 
@@ -538,7 +532,25 @@ export const Example = () => {
         </Box>
       </Box>
       <Box sx={{ width: "100%" }}>
-        <ComplexTable<IUser> data={users} />
+        <ComplexTable<IUser>
+          data={users}
+          labelColumns={{
+            matricula: "Matrícula",
+            cursoSigla: "Curso",
+            nome: "Nome",
+            email: "E-mail",
+            tipo: "Permissão",
+            createdAt: "Data de criação",
+          }}
+          widthColumns={{
+            matricula: "100px",
+            cursoSigla: "100px",
+            nome: "250px",
+            email: "200px",
+            tipo: "200px",
+            createdAt: "100px",
+          }}
+        />
       </Box>
     </Box>
   );

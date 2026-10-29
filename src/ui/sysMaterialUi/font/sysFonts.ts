@@ -1,4 +1,4 @@
-import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
+import type { TypographyVariantsOptions } from "@mui/material/styles";
 
 class SysFonts {
   public static readonly fontFamily = "Rawline, sans-serif";
@@ -85,6 +85,7 @@ class SysFonts {
     fontWeight: 700,
     fontSize: `${14 * _fontScale}px`,
     lineHeight: "normal",
+    letterspacing: "4%",
     "@media screen and (max-width: 600px)": {
       fontSize: `${18 * _fontScale}px`,
       lineHeight: "normal",
@@ -97,6 +98,7 @@ class SysFonts {
     textTransform: "none" as "none",
     fontWeight: 700,
     lineHeight: "24px",
+    letterspacing: "4%",
     "@media screen and (max-width: 600px)": {
       fontSize: `${12 * _fontScale}px`,
       lineHeight: "normal",
@@ -159,8 +161,8 @@ class SysFonts {
   });
 
   public static readonly getTypography = (
-    _fontScale: number = 1
-  ): TypographyStyleOptions => ({
+    _fontScale: number = 1,
+  ): TypographyVariantsOptions => ({
     fontFamily: SysFonts.fontFamily,
     h1: SysFonts.h1(_fontScale),
     h2: SysFonts.h2(_fontScale),
