@@ -10,12 +10,13 @@ interface IStyles {
 }
 
 const AppLayoutStyles: IStyles = {
-  AppScreen: styled(Box)(() => ({
+  AppScreen: styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
     height: "100%",
     position: "relative",
+    background: theme.palette.background.paper,
   })),
   AppBody: styled(Box)(() => ({
     display: "flex",
@@ -26,7 +27,7 @@ const AppLayoutStyles: IStyles = {
     width: "100%",
     height: "100%",
     position: "relative",
-    overflow: "scroll",
+    overflow: "auto",
   })),
 };
 

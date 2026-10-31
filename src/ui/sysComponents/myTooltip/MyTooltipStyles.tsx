@@ -1,5 +1,7 @@
 import { styled, Tooltip, tooltipClasses, TooltipProps } from "@mui/material";
 
+import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
+
 interface IMyTooltip extends TooltipProps {
   customWidth: string;
 }
@@ -10,10 +12,18 @@ const CustomWidthTooltip = styled(
   ),
 )(({ customWidth, theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.sysText?.body,
+    color: theme.palette.sysText?.base,
+    borderRadius: sysSizing.radiusXs,
+    padding: `${sysSizing.spacingRemXs} ${sysSizing.spacingRemSm}`,
     maxWidth: customWidth,
+    ...theme.typography.caption,
   },
+
   [theme.breakpoints.down("sm")]: {
-    maxWidth: 220,
+    [`& .${tooltipClasses.tooltip}`]: {
+      maxWidth: 220,
+    },
   },
 }));
 

@@ -45,6 +45,9 @@ const ComplexTableStyles: IStyles = {
     borderBottom: `1px solid ${theme.palette.divider}`,
     padding: `0px ${sysSizing.spacingFixedMd}`,
     columnGap: sysSizing.spacingFixedLg,
+    "&:hover": {
+      backgroundColor: theme.palette.action.disabledBackground,
+    },
   })),
   Column: styled(Box)(() => ({
     minWidth: 0,

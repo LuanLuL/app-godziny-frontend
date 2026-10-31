@@ -177,7 +177,6 @@ export const Example = () => {
         display: "flex",
         flexDirection: "column",
         gap: "30px",
-        background: (theme) => theme.palette.background.paper,
       }}
     >
       <Box
@@ -549,6 +548,11 @@ export const Example = () => {
             email: "200px",
             tipo: "200px",
             createdAt: "100px",
+          }}
+          onRowClick={(row) => {
+            console.log(row.nome);
+            console.log(row.email);
+            console.log(row.index);
           }}
         />
       </Box>

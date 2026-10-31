@@ -74,10 +74,7 @@ class SysFonts {
     fontWeight: 700,
     fontSize: `${16 * _fontScale}px`,
     lineHeight: "normal",
-    "@media screen and (max-width: 600px)": {
-      fontSize: `${18 * _fontScale}px`,
-      lineHeight: "normal",
-    },
+    letterspacing: "4%",
   });
 
   public static readonly subtitle2 = (_fontScale: number = 1) => ({
@@ -86,10 +83,6 @@ class SysFonts {
     fontSize: `${14 * _fontScale}px`,
     lineHeight: "normal",
     letterspacing: "4%",
-    "@media screen and (max-width: 600px)": {
-      fontSize: `${18 * _fontScale}px`,
-      lineHeight: "normal",
-    },
   });
 
   public static readonly button = (_fontScale: number = 1) => ({
