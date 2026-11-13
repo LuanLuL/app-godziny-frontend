@@ -179,6 +179,7 @@ export const Example = () => {
         gap: "30px",
       }}
     >
+      {/* <SysCoverLoading label="Carregando..." size="medium" /> */}
       <Box
         sx={{
           display: "flex",
@@ -533,6 +534,7 @@ export const Example = () => {
       <Box sx={{ width: "100%" }}>
         <ComplexTable<IUser>
           data={users}
+          loading={false}
           labelColumns={{
             matricula: "Matrícula",
             cursoSigla: "Curso",

@@ -8,6 +8,7 @@ interface IStyles {
   Head: ElementType<BoxProps>;
   Line: ElementType<BoxProps>;
   Column: ElementType<BoxProps>;
+  LoadingContainer: ElementType<BoxProps>;
 }
 
 const ComplexTableStyles: IStyles = {
@@ -57,6 +58,10 @@ const ComplexTableStyles: IStyles = {
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
+  })),
+  LoadingContainer: styled(Box)(() => ({
+    width: "100%",
+    height: "300px",
   })),
 };
 

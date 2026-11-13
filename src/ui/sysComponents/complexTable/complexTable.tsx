@@ -2,6 +2,7 @@ import React from "react";
 import Styles from "./complexTableStyles";
 import { Typography } from "@mui/material";
 import { MyTooltip } from "../myTooltip/MyTooltip";
+import { SysCircularLoading } from "../sysLoading/sysCircularLoading/SysCircularLoading";
 
 export type IRowComplexTableProps<T> = T & {
   index: number;
@@ -12,6 +13,7 @@ interface IComplexTableProps<T> {
   labelColumns: Partial<Record<keyof T, string>>;
   widthColumns: Partial<Record<keyof T, string>>;
   onRowClick?: (row: IRowComplexTableProps<T>) => void;
+  loading?: boolean;
 }
 
 export const ComplexTable = <T,>({
@@ -19,6 +21,7 @@ export const ComplexTable = <T,>({
   labelColumns,
   widthColumns,
   onRowClick,
+  loading = false,
 }: IComplexTableProps<T>) => {
   const columns = Object.keys(labelColumns).filter(
     (column) => column in widthColumns,
@@ -67,43 +70,49 @@ export const ComplexTable = <T,>({
         })}
       </Styles.Head>
 
-      {data.map((item, index) => (
-        <Styles.Line
-          key={index}
-          onClick={() => onRowClick?.({ ...item, index })}
-          sx={{
-            width: `${minTableWidth}px`,
-            minWidth: "100%",
-            gridTemplateColumns,
-            cursor: onRowClick ? "pointer" : "default",
-          }}
-        >
-          {columns.map((column) => {
-            const value = item[column];
-            return (
-              <MyTooltip
-                customWidth="auto"
-                title={String(value)}
-                disabled={value == null || value === ""}
-                placement="bottom-start"
-              >
-                <Styles.Column key={String(column)}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {String(value ?? "-")}
-                  </Typography>
-                </Styles.Column>
-              </MyTooltip>
-            );
-          })}
-        </Styles.Line>
-      ))}
+      {loading ? (
+        <Styles.LoadingContainer>
+          <SysCircularLoading />
+        </Styles.LoadingContainer>
+      ) : (
+        data.map((item, index) => (
+          <Styles.Line
+            key={index}
+            onClick={() => onRowClick?.({ ...item, index })}
+            sx={{
+              width: `${minTableWidth}px`,
+              minWidth: "100%",
+              gridTemplateColumns,
+              cursor: onRowClick ? "pointer" : "default",
+            }}
+          >
+            {columns.map((column) => {
+              const value = item[column];
+              return (
+                <MyTooltip
+                  customWidth="auto"
+                  title={String(value)}
+                  disabled={value == null || value === ""}
+                  placement="bottom-start"
+                >
+                  <Styles.Column key={String(column)}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {String(value ?? "-")}
+                    </Typography>
+                  </Styles.Column>
+                </MyTooltip>
+              );
+            })}
+          </Styles.Line>
+        ))
+      )}
     </Styles.Table>
   );
 };
