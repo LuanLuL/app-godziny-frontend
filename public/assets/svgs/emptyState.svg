@@ -1,0 +1,73 @@
+
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Fundo Circular -->
+  <circle cx="120" cy="120" r="95" fill="#ccd6eb" fill-opacity="0.5" />
+  <circle cx="120" cy="120" r="82" fill="#ffffff" stroke="#001f5C" stroke-width="4" stroke-dasharray="8 6" />
+
+  <!-- Sombra / Documento Traseiro -->
+  <rect x="75" y="78" width="65" height="84" rx="12"
+        fill="#c9d4df" stroke="#001f5C" stroke-width="3"
+        transform="rotate(-6 107 120)" />
+
+  <!-- Documento Principal com dobra integrada -->
+  <path
+    d="M97 68
+       H137
+       L157 88
+       V148
+       Q157 160 145 160
+       H97
+       Q85 160 85 148
+       V80
+       Q85 68 97 68Z"
+    fill="#ffffff"
+    stroke="#001f5C"
+    stroke-width="4"
+    stroke-linejoin="round"
+  />
+
+  <!-- Dobra do documento -->
+  <path
+    d="M137 68V90H157"
+    fill="none"
+    stroke="#001f5C"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Linhas de Texto -->
+  <rect x="97" y="94" width="38" height="6" rx="3" fill="#003399" />
+  <rect x="97" y="110" width="48" height="6" rx="3" fill="#c9d4df" />
+  <rect x="97" y="126" width="30" height="6" rx="3" fill="#c9d4df" />
+
+  <!-- Lupa -->
+  <g transform="translate(104.5, 107)">
+
+    <!-- Cabo da Lupa -->
+    <rect x="30" y="36" width="10" height="32" rx="5"
+          fill="#003399"
+          transform="rotate(-30 36 36)"
+          stroke="#001f5C"
+          stroke-width="2" />
+
+    <!-- Corpo da Lupa -->
+    <circle cx="24" cy="24" r="20"
+            fill="#ffffff"
+            stroke="#001f5C"
+            stroke-width="4" />
+
+    <circle cx="24" cy="24" r="13"
+            fill="#ccd6eb"
+            fill-opacity="0.6" />
+
+    <!-- Brilho na Lente -->
+    <path d="M14 20C14 16 18 14 22 14"
+          stroke="#ffffff"
+          stroke-width="3"
+          stroke-linecap="round" />
+
+  </g>
+
+</svg>

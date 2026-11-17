@@ -1,8 +1,9 @@
 import React from "react";
-import Styles from "./complexTableStyles";
+import Styles from "./ComplexTableStyles";
 import { Typography } from "@mui/material";
 import { MyTooltip } from "../myTooltip/MyTooltip";
 import { SysCircularLoading } from "../sysLoading/sysCircularLoading/SysCircularLoading";
+import { SysEmptyState } from "../sysEmptyState/SysEmptyState";
 
 export type IRowComplexTableProps<T> = T & {
   index: number;
@@ -14,6 +15,12 @@ interface IComplexTableProps<T> {
   widthColumns: Partial<Record<keyof T, string>>;
   onRowClick?: (row: IRowComplexTableProps<T>) => void;
   loading?: boolean;
+  customEmptyState?: {
+    imagePath: string;
+    imageSize?: { height: number; width: number };
+    title: string;
+    description: string;
+  };
 }
 
 export const ComplexTable = <T,>({
@@ -22,6 +29,13 @@ export const ComplexTable = <T,>({
   widthColumns,
   onRowClick,
   loading = false,
+  customEmptyState = {
+    imagePath: "/assets/svgs/emptyState.svg",
+    imageSize: { width: 190, height: 130 },
+    title: "Nenhum resultado encontrado",
+    description:
+      "Tente ajustar a pesquisa ou os filtros para encontrar o que procura",
+  },
 }: IComplexTableProps<T>) => {
   const columns = Object.keys(labelColumns).filter(
     (column) => column in widthColumns,
@@ -43,6 +57,9 @@ export const ComplexTable = <T,>({
     ) +
     (columns.length - 1) * 24 +
     2 * 16;
+
+  const hasData = data.length > 0;
+  const shouldShowEmptyState = !loading && !hasData;
 
   return (
     <Styles.Table>
@@ -74,6 +91,16 @@ export const ComplexTable = <T,>({
         <Styles.LoadingContainer>
           <SysCircularLoading />
         </Styles.LoadingContainer>
+      ) : shouldShowEmptyState ? (
+        <Styles.EmptyStateContainer>
+          <SysEmptyState
+            imagePath={customEmptyState.imagePath}
+            imageSize={customEmptyState.imageSize}
+            title={customEmptyState.title}
+            description={customEmptyState.description}
+            sxMap={{ container: { height: "312px" } }}
+          />
+        </Styles.EmptyStateContainer>
       ) : (
         data.map((item, index) => (
           <Styles.Line

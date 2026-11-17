@@ -1,7 +1,7 @@
 import { SxProps, Theme, Typography, TypographyProps } from "@mui/material";
 import Styles from "../components/SysLoadingStyles";
 
-interface ISysCoverLoading {
+interface ISysCoverLoadingProps {
   label?: string;
   size?: "small" | "medium" | "large";
   sxMap?: {
@@ -11,7 +11,7 @@ interface ISysCoverLoading {
   };
 }
 
-export const SysCoverLoading: React.FC<ISysCoverLoading> = ({
+export const SysCoverLoading: React.FC<ISysCoverLoadingProps> = ({
   label,
   size = "medium",
   sxMap,

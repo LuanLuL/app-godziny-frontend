@@ -22,7 +22,7 @@ import {
   SysSelectField,
 } from "../../sysComponents/sysForm/sysSelectField/SysSelectField";
 import { SysSelectMultipleField } from "../../sysComponents/sysForm/sysSelectMultipleField/SysSelectMultipleField";
-import { ComplexTable } from "../../sysComponents/complexTable/complexTable";
+import { ComplexTable } from "../../sysComponents/complexTable/ComplexTable";
 
 interface IUser {
   matricula: string | null;

@@ -9,6 +9,7 @@ interface IStyles {
   Line: ElementType<BoxProps>;
   Column: ElementType<BoxProps>;
   LoadingContainer: ElementType<BoxProps>;
+  EmptyStateContainer: ElementType<BoxProps>;
 }
 
 const ComplexTableStyles: IStyles = {
@@ -62,6 +63,15 @@ const ComplexTableStyles: IStyles = {
   LoadingContainer: styled(Box)(() => ({
     width: "100%",
     height: "300px",
+  })),
+  EmptyStateContainer: styled(Box)(() => ({
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    background: "transparent",
   })),
 };
 
