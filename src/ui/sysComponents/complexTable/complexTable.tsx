@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import { MyTooltip } from "../myTooltip/MyTooltip";
 import { SysCircularLoading } from "../sysLoading/sysCircularLoading/SysCircularLoading";
 import { SysEmptyState } from "../sysEmptyState/SysEmptyState";
+import { PaginationTable } from "../sysPagination/paginationTable/PaginationTable";
 
 export type IRowComplexTableProps<T> = T & {
   index: number;
@@ -140,6 +141,16 @@ export const ComplexTable = <T,>({
           </Styles.Line>
         ))
       )}
+      <Styles.Footer>
+        <PaginationTable
+          handlePageChange={() => {}}
+          paginationModel={{
+            page: 3,
+            pageSize: 10,
+          }}
+          totalItens={35}
+        />
+      </Styles.Footer>
     </Styles.Table>
   );
 };

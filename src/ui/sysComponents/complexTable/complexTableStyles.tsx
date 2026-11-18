@@ -2,6 +2,7 @@ import { Box, BoxProps, styled } from "@mui/material";
 import { ElementType } from "react";
 import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
 import { sysShadows } from "../../sysMaterialUi/shadow/sysShadows";
+import { yellow } from "@mui/material/colors";
 
 interface IStyles {
   Table: ElementType<BoxProps>;
@@ -10,6 +11,7 @@ interface IStyles {
   Column: ElementType<BoxProps>;
   LoadingContainer: ElementType<BoxProps>;
   EmptyStateContainer: ElementType<BoxProps>;
+  Footer: ElementType<BoxProps>;
 }
 
 const ComplexTableStyles: IStyles = {
@@ -72,6 +74,12 @@ const ComplexTableStyles: IStyles = {
     justifyContent: "center",
     flexDirection: "column",
     background: "transparent",
+  })),
+  Footer: styled(Box)(({ theme }) => ({
+    minHeight: "60px",
+    width: "100%",
+    padding: sysSizing.spacingFixedMd,
+    borderBottom: `1px solid ${theme.palette.divider}`,
   })),
 };
 
