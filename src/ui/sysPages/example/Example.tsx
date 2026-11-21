@@ -23,6 +23,7 @@ import {
 } from "../../sysComponents/sysForm/sysSelectField/SysSelectField";
 import { SysSelectMultipleField } from "../../sysComponents/sysForm/sysSelectMultipleField/SysSelectMultipleField";
 import { ComplexTable } from "../../sysComponents/complexTable/ComplexTable";
+import { usePaginationAndSort } from "../../../shared/hooks/usePaginationAndSorts";
 
 interface IUser {
   matricula: string | null;
@@ -86,8 +87,13 @@ type Form = {
 };
 
 export const Example = () => {
+  const storageKey = "exampleState";
   const { showNotification, showDialog, closeDialog } =
     useContext(SysAppContext);
+
+  const { page, handlePageChange } = usePaginationAndSort({
+    storageKey,
+  });
 
   const [valueForm, setValueForm] = useState<Form>({
     toggleInput: false,
@@ -555,6 +561,12 @@ export const Example = () => {
             console.log(row.nome);
             console.log(row.email);
             console.log(row.index);
+          }}
+          custonPageControl={{
+            handlePageChange,
+            paginationModel: page,
+            totalItens: users.length,
+            pageSizeOptions: [1, 3, 5],
           }}
         />
       </Box>

@@ -5,6 +5,7 @@ import { MyTooltip } from "../myTooltip/MyTooltip";
 import { SysCircularLoading } from "../sysLoading/sysCircularLoading/SysCircularLoading";
 import { SysEmptyState } from "../sysEmptyState/SysEmptyState";
 import { PaginationTable } from "../sysPagination/paginationTable/PaginationTable";
+import { PaginationModel } from "../sysPagination/SysPaginationSch";
 
 export type IRowComplexTableProps<T> = T & {
   index: number;
@@ -22,6 +23,12 @@ interface IComplexTableProps<T> {
     title: string;
     description: string;
   };
+  custonPageControl?: {
+    handlePageChange: (paginationModel: PaginationModel) => void;
+    paginationModel: { page: number; pageSize: number };
+    totalItens: number;
+    pageSizeOptions: Array<number>;
+  };
 }
 
 export const ComplexTable = <T,>({
@@ -37,6 +44,7 @@ export const ComplexTable = <T,>({
     description:
       "Tente ajustar a pesquisa ou os filtros para encontrar o que procura",
   },
+  custonPageControl = undefined,
 }: IComplexTableProps<T>) => {
   const columns = Object.keys(labelColumns).filter(
     (column) => column in widthColumns,
@@ -79,8 +87,9 @@ export const ComplexTable = <T,>({
               title={String(value)}
               disableInteractive
               placement="bottom-start"
+              key={String(column)}
             >
-              <Styles.Column key={String(column)}>
+              <Styles.Column>
                 <Typography variant="subtitle2">{value}</Typography>
               </Styles.Column>
             </MyTooltip>
@@ -122,8 +131,9 @@ export const ComplexTable = <T,>({
                   title={String(value)}
                   disabled={value == null || value === ""}
                   placement="bottom-start"
+                  key={String(column)}
                 >
-                  <Styles.Column key={String(column)}>
+                  <Styles.Column>
                     <Typography
                       variant="body1"
                       sx={{
@@ -141,16 +151,16 @@ export const ComplexTable = <T,>({
           </Styles.Line>
         ))
       )}
-      <Styles.Footer>
-        <PaginationTable
-          handlePageChange={() => {}}
-          paginationModel={{
-            page: 3,
-            pageSize: 10,
-          }}
-          totalItens={35}
-        />
-      </Styles.Footer>
+      {custonPageControl && (
+        <Styles.Footer>
+          <PaginationTable
+            handlePageChange={custonPageControl?.handlePageChange}
+            paginationModel={custonPageControl?.paginationModel}
+            totalItens={custonPageControl?.totalItens}
+            pageSizeOptions={custonPageControl?.pageSizeOptions}
+          />
+        </Styles.Footer>
+      )}
     </Styles.Table>
   );
 };

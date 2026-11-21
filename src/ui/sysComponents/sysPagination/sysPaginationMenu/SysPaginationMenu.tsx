@@ -1,7 +1,9 @@
 import React from "react";
 import { BasicMenu, IoptionsToBasicMenu } from "../../basicMenu/BasicMenu";
+import SysIcon from "../../sysIcon/SysIcons";
 
 interface ISysPaginationMenuProps {
+  indexOfComponent: string;
   value: number | string;
   options: number[];
   onChange: (value: number) => void;
@@ -9,6 +11,7 @@ interface ISysPaginationMenuProps {
 }
 
 export const SysPaginationMenu: React.FC<ISysPaginationMenuProps> = ({
+  indexOfComponent,
   value,
   options,
   onChange,
@@ -19,5 +22,31 @@ export const SysPaginationMenu: React.FC<ISysPaginationMenuProps> = ({
     onClick: () => onChange(option),
   }));
 
-  return <BasicMenu indexOfComponent="SysPagination" options={menuOptions} />;
+  return (
+    <BasicMenu
+      sxMap={{
+        menu: {
+          "& .MuiPaper-root": {
+            width: "max-content",
+            minWidth: "0",
+          },
+        },
+        menuItem: {
+          minWidth: "0 !important",
+          width: "max-content",
+          whiteSpace: "nowrap",
+        },
+      }}
+      indexOfComponent={indexOfComponent}
+      options={menuOptions}
+      disabled={disabled}
+      custonIcon={
+        <SysIcon
+          name="arrayDropDown"
+          fontSize="small"
+          sx={{ color: (t) => t.palette.primary.main }}
+        />
+      }
+    />
+  );
 };
