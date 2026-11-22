@@ -617,6 +617,7 @@ export const Example = () => {
               }
             }
           }}
+          onRowClick={(row) => console.log("Clicou em = ", row)}
           renderActions={actionOptionComplexTable}
           sxMap={{
             basicMenu: {

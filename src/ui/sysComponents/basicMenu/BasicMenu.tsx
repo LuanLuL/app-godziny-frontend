@@ -79,7 +79,10 @@ export const BasicMenu = <T extends unknown[] = []>({
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+          event.stopPropagation();
+          handleClick(event);
+        }}
         disabled={disabled}
       >
         {custonIcon}
@@ -106,7 +109,8 @@ export const BasicMenu = <T extends unknown[] = []>({
         {options.slice(0, visibleCount).map((item, index) => (
           <Styles.MenuItemBody
             key={`Component${indexOfComponent}basicMenu${index}`}
-            onClick={() => {
+            onClick={(event) => {
+              event.stopPropagation();
               item.onClick();
               handleClose();
             }}
