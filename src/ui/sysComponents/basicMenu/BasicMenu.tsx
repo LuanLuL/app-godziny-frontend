@@ -1,5 +1,4 @@
 import * as React from "react";
-import MenuItem from "@mui/material/MenuItem";
 import Styles from "./BasicMenuStyles";
 import Typography from "@mui/material/Typography";
 import SysIcon from "../sysIcon/SysIcons";

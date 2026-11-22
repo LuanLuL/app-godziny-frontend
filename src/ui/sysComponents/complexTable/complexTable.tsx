@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from "./ComplexTableStyles";
-import { SxProps, Theme, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { MyTooltip } from "../myTooltip/MyTooltip";
 import { SysCircularLoading } from "../sysLoading/sysCircularLoading/SysCircularLoading";
 import { SysEmptyState } from "../sysEmptyState/SysEmptyState";
