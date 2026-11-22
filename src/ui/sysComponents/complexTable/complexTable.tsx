@@ -1,15 +1,30 @@
 import React from "react";
 import Styles from "./ComplexTableStyles";
-import { Typography } from "@mui/material";
+import { SxProps, Theme, Typography } from "@mui/material";
 import { MyTooltip } from "../myTooltip/MyTooltip";
 import { SysCircularLoading } from "../sysLoading/sysCircularLoading/SysCircularLoading";
 import { SysEmptyState } from "../sysEmptyState/SysEmptyState";
 import { PaginationTable } from "../sysPagination/paginationTable/PaginationTable";
 import { PaginationModel } from "../sysPagination/SysPaginationSch";
+import { BasicMenu, IoptionsToBasicMenu } from "../basicMenu/BasicMenu";
+import SysIcon from "../sysIcon/SysIcons";
 
 export type IRowComplexTableProps<T> = T & {
   index: number;
 };
+
+type ModifiedCellProps<T> =
+  | {
+      fieldsModifiedCell: Array<keyof T>;
+      renderModifiedCell: (
+        row: IRowComplexTableProps<T>,
+        field: keyof T,
+      ) => React.ReactNode;
+    }
+  | {
+      fieldsModifiedCell?: never;
+      renderModifiedCell?: never;
+    };
 
 interface IComplexTableProps<T> {
   data: T[];
@@ -27,9 +42,15 @@ interface IComplexTableProps<T> {
     handlePageChange: (paginationModel: PaginationModel) => void;
     paginationModel: { page: number; pageSize: number };
     totalItens: number;
-    pageSizeOptions: Array<number>;
+    pageSizeOptions: number[];
+  };
+  renderActions?: IoptionsToBasicMenu<[IRowComplexTableProps<T>]>[];
+  sxMap?: {
+    basicMenu?: React.ComponentProps<typeof BasicMenu>["sxMap"];
   };
 }
+
+type IUnionComplexTableProps<T> = IComplexTableProps<T> & ModifiedCellProps<T>;
 
 export const ComplexTable = <T,>({
   data,
@@ -45,19 +66,24 @@ export const ComplexTable = <T,>({
       "Tente ajustar a pesquisa ou os filtros para encontrar o que procura",
   },
   custonPageControl = undefined,
-}: IComplexTableProps<T>) => {
+  fieldsModifiedCell = [],
+  renderModifiedCell = undefined,
+  renderActions = undefined,
+  sxMap,
+}: IUnionComplexTableProps<T>) => {
   const columns = Object.keys(labelColumns).filter(
     (column) => column in widthColumns,
   ) as Array<keyof T>;
 
-  const gridTemplateColumns = columns
-    .map((column) => {
+  const gridTemplateColumns = [
+    ...columns.map((column) => {
       const minWidth = widthColumns[column]!;
       const flex = Number.parseFloat(minWidth);
 
       return `minmax(${minWidth}, ${flex}fr)`;
-    })
-    .join(" ");
+    }),
+    ...(renderActions ? ["32px"] : []),
+  ].join(" ");
 
   const minTableWidth =
     columns.reduce(
@@ -65,7 +91,8 @@ export const ComplexTable = <T,>({
       0,
     ) +
     (columns.length - 1) * 24 +
-    2 * 16;
+    2 * 16 +
+    (renderActions ? 32 + 24 : 0);
 
   const hasData = data.length > 0;
   const shouldShowEmptyState = !loading && !hasData;
@@ -125,6 +152,9 @@ export const ComplexTable = <T,>({
           >
             {columns.map((column) => {
               const value = item[column];
+              if (fieldsModifiedCell.includes(column))
+                return renderModifiedCell?.({ ...item, index }, column);
+
               return (
                 <MyTooltip
                   customWidth="auto"
@@ -148,6 +178,31 @@ export const ComplexTable = <T,>({
                 </MyTooltip>
               );
             })}
+            {renderActions && (
+              <BasicMenu<[IRowComplexTableProps<T>]>
+                indexOfComponent={`renderActionLine${index}`}
+                options={renderActions.map((action) => ({
+                  ...action,
+                  onClick: () => action.onClick({ ...item, index }),
+                }))}
+                sxMap={sxMap?.basicMenu}
+                custonIcon={
+                  <SysIcon
+                    name="moreVert"
+                    fontSize="small"
+                    sx={{ color: (t) => t.palette.primary.main }}
+                  />
+                }
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                transformOrigin={{
+                  vertical: "center",
+                  horizontal: "right",
+                }}
+              />
+            )}
           </Styles.Line>
         ))
       )}

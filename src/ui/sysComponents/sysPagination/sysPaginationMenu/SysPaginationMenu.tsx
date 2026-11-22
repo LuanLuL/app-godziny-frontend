@@ -24,19 +24,6 @@ export const SysPaginationMenu: React.FC<ISysPaginationMenuProps> = ({
 
   return (
     <BasicMenu
-      sxMap={{
-        menu: {
-          "& .MuiPaper-root": {
-            width: "max-content",
-            minWidth: "0",
-          },
-        },
-        menuItem: {
-          minWidth: "0 !important",
-          width: "max-content",
-          whiteSpace: "nowrap",
-        },
-      }}
       indexOfComponent={indexOfComponent}
       options={menuOptions}
       disabled={disabled}

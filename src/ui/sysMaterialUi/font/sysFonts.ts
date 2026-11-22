@@ -169,6 +169,8 @@ class SysFonts {
     body1: SysFonts.body1(_fontScale),
     body2: SysFonts.body2(_fontScale),
     caption: SysFonts.caption(_fontScale),
+    caption2: SysFonts.caption2(_fontScale),
+    caption3: SysFonts.caption3(_fontScale),
   });
 }
 

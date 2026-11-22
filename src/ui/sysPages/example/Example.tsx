@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { IconTooltip } from "../../sysComponents/iconTooltip/IconTooltip";
 import {
   BasicMenu,
@@ -22,8 +22,12 @@ import {
   SysSelectField,
 } from "../../sysComponents/sysForm/sysSelectField/SysSelectField";
 import { SysSelectMultipleField } from "../../sysComponents/sysForm/sysSelectMultipleField/SysSelectMultipleField";
-import { ComplexTable } from "../../sysComponents/complexTable/ComplexTable";
+import {
+  ComplexTable,
+  IRowComplexTableProps,
+} from "../../sysComponents/complexTable/ComplexTable";
 import { usePaginationAndSort } from "../../../shared/hooks/usePaginationAndSorts";
+import sysSizing from "../../sysMaterialUi/sizing/sysSizes";
 
 interface IUser {
   matricula: string | null;
@@ -129,7 +133,7 @@ export const Example = () => {
     {
       label: "Opção 1",
       onClick: () => {
-        console.log("Selecionei a opção 1");
+        console.log("Selecionei a opção 1 = ");
       },
     },
     {
@@ -154,6 +158,23 @@ export const Example = () => {
       label: "Opção 5",
       onClick: () => {
         console.log("Selecionei a opção 5");
+      },
+    },
+  ];
+
+  const actionOptionComplexTable: IoptionsToBasicMenu<
+    [IRowComplexTableProps<IUser>]
+  >[] = [
+    {
+      label: "Visualizar",
+      onClick: (row) => {
+        console.log("Visualizar = ", row);
+      },
+    },
+    {
+      label: "Editar",
+      onClick: (row) => {
+        console.log("Editar = ", row);
       },
     },
   ];
@@ -210,7 +231,17 @@ export const Example = () => {
             <></>
           </IconTooltip>
         </Box>
-        <BasicMenu indexOfComponent="1" options={optionsToBasicMenu} />
+        <BasicMenu
+          indexOfComponent="1"
+          options={optionsToBasicMenu}
+          sxMap={{
+            menu: {
+              "& .MuiPaper-root": {
+                width: "133px",
+              },
+            },
+          }}
+        />
         <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <SysButton
             mode="primary"
@@ -542,31 +573,59 @@ export const Example = () => {
           data={users}
           loading={false}
           labelColumns={{
-            matricula: "Matrícula",
-            cursoSigla: "Curso",
             nome: "Nome",
+            cursoSigla: "Curso",
             email: "E-mail",
             tipo: "Permissão",
-            createdAt: "Data de criação",
           }}
           widthColumns={{
-            matricula: "100px",
-            cursoSigla: "100px",
-            nome: "250px",
-            email: "200px",
-            tipo: "200px",
-            createdAt: "100px",
-          }}
-          onRowClick={(row) => {
-            console.log(row.nome);
-            console.log(row.email);
-            console.log(row.index);
+            nome: "156px",
+            cursoSigla: "156px",
+            email: "156px",
+            tipo: "140px",
           }}
           custonPageControl={{
             handlePageChange,
             paginationModel: page,
             totalItens: users.length,
             pageSizeOptions: [1, 3, 5],
+          }}
+          fieldsModifiedCell={["tipo"]}
+          renderModifiedCell={(row, field) => {
+            switch (field) {
+              case "tipo": {
+                return (
+                  <Box
+                    sx={{
+                      background: (t) => t.palette.primary.light,
+                      padding: `${sysSizing.spacingFixedXs} ${sysSizing.spacingFixedMd}`,
+                      borderRadius: `${sysSizing.radiusXs}`,
+                      maxWidth: "140px",
+                      textAlign: "center",
+                      textTransform: "capitalize",
+                    }}
+                    key={`tipoRender${row.index}`}
+                  >
+                    <Typography variant="caption2" color="primary.main">
+                      {row[field].toLocaleLowerCase()}
+                    </Typography>
+                  </Box>
+                );
+              }
+              default: {
+                return null;
+              }
+            }
+          }}
+          renderActions={actionOptionComplexTable}
+          sxMap={{
+            basicMenu: {
+              menu: {
+                "& .MuiPaper-root": {
+                  width: "140px",
+                },
+              },
+            },
           }}
         />
       </Box>

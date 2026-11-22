@@ -6,17 +6,17 @@ import SysIcon from "../sysIcon/SysIcons";
 import { MenuProps, SxProps } from "@mui/material";
 import { Theme } from "@emotion/react";
 
-export type IoptionsToBasicMenu = {
+export type IoptionsToBasicMenu<T extends unknown[] = []> = {
   label: string;
-  onClick: () => void;
+  onClick: ((...args: T) => void) | (() => void);
 };
 
-interface IBasicMenuProps extends Omit<
+interface IBasicMenuProps<T extends unknown[] = []> extends Omit<
   MenuProps,
   "open" | "anchorEl" | "onClose"
 > {
   indexOfComponent: string;
-  options: IoptionsToBasicMenu[];
+  options: IoptionsToBasicMenu<T>[];
   custonIcon?: React.ReactNode;
   sxMap?: {
     menu?: SxProps<Theme>;
@@ -28,7 +28,7 @@ interface IBasicMenuProps extends Omit<
 const ITEMS_PER_LOAD = 200;
 const SCROLL_THRESHOLD = 150;
 
-export const BasicMenu: React.FC<IBasicMenuProps> = ({
+export const BasicMenu = <T extends unknown[] = []>({
   indexOfComponent,
   options = [],
   custonIcon = (
@@ -37,7 +37,7 @@ export const BasicMenu: React.FC<IBasicMenuProps> = ({
   sxMap,
   disabled = false,
   ...props
-}) => {
+}: IBasicMenuProps<T>) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [visibleCount, setVisibleCount] = React.useState(ITEMS_PER_LOAD);
 
@@ -105,7 +105,7 @@ export const BasicMenu: React.FC<IBasicMenuProps> = ({
         {...props}
       >
         {options.slice(0, visibleCount).map((item, index) => (
-          <MenuItem
+          <Styles.MenuItemBody
             key={`Component${indexOfComponent}basicMenu${index}`}
             onClick={() => {
               item.onClick();
@@ -114,7 +114,7 @@ export const BasicMenu: React.FC<IBasicMenuProps> = ({
             sx={sxMap?.menuItem}
           >
             <Typography variant="body2">{item.label}</Typography>
-          </MenuItem>
+          </Styles.MenuItemBody>
         ))}
       </Styles.MenuBody>
     </>
